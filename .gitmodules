@@ -1,0 +1,3 @@
+[submodule "awesome-todo"]
+	path = awesome-todo
+	url = git@github.com:joshua-barnett/awesome-todo.git
