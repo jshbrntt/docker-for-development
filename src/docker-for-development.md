@@ -369,7 +369,7 @@ File Type: EXECUTABLE IMAGE
 
 ---
 
-# 🌠 Humble beginnings
+# :stars: Humble beginnings
 
 ```bash
 $ node --version # Node.js running on my host
@@ -381,13 +381,13 @@ v17.1.0
 $ docker run --rm node:latest --version # <image>:<tag> the default tag is 'latest'
 v17.1.0
 
-$ docker run --rm node:16.13.0 --version # Specific Node.js running in a container
+$ docker run --rm node:16.13.0 --version # Specific Node.js running inside a container
 v16.13.0
 
-$ docker run --rm node which node # Location of Node.js binary in the container
+$ docker run --rm node which node # Location of Node.js binary inside the container
 /usr/local/bin/node
 
-$ docker run --rm node ldd /usr/local/bin/node # Dependencies of Node.js in container
+$ docker run --rm node ldd /usr/local/bin/node # Dependencies of Node.js inside the container
         linux-vdso.so.1 (0x00007ffe80b9c000)
         libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f32df703000)
         libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f32df536000)
@@ -405,8 +405,8 @@ $ docker run --rm node ldd /usr/local/bin/node # Dependencies of Node.js in cont
 ```bash
 $ docker run \    # Run a command in a new container
 --rm \            # Automatically remove the container when it exits
---interactive \   # Keep STDIN open even if not attached
---tty \           # Allocate a pseudo-TTY
+--interactive \   # Keep STDIN open even if not attached *
+--tty \           # Allocate a pseudo-TTY *
 --workdir ~ \     # Working directory inside the container
 --name dev \      # Assign a name to the container
 node \            # Official Node Docker Image
@@ -428,20 +428,20 @@ bash: vim: command not found
 # :muscle: Power through
 
 ```bash
-root@f6513673f9f6:/home/joshua# mkdir awesome-todo
-root@f6513673f9f6:/home/joshua# cd awesome-todo/
+root@f6513673f9f6:/home/joshua# mkdir todo
+root@f6513673f9f6:/home/joshua# cd todo/
 
 # Initialize a Node.js module
-root@f6513673f9f6:/home/joshua/awesome-todo# yarn init --yes
+root@f6513673f9f6:/home/joshua/todo# yarn init --yes
 
 # Write some code
-root@f6513673f9f6:/home/joshua/awesome-todo# echo 'console.log("Hello World! 🥳")' > index.js
+root@f6513673f9f6:/home/joshua/todo# echo 'console.log("Hello World! 🥳")' > index.js
 
-# Write some MORE code
-root@f6513673f9f6:/home/joshua/awesome-todo# echo 'console.log("Look mum no vim! 😯")' >> index.js
+# Write some MORE code!
+root@f6513673f9f6:/home/joshua/todo# echo 'console.log("Look mum no vim! 😯")' >> index.js
 
 # Run the program
-root@f6513673f9f6:/home/joshua/awesome-todo# node .
+root@f6513673f9f6:/home/joshua/todo# node .
 Hello World! 🥳
 Look mum no vim! 😯
 ```
@@ -452,12 +452,12 @@ Look mum no vim! 😯
 
 ```bash
 # echo is great but and the very least give me vim
-root@f6513673f9f6:/home/joshua/awesome-todo# apt update
-root@f6513673f9f6:/home/joshua/awesome-todo# apt install vim
-root@f6513673f9f6:/home/joshua/awesome-todo# vim index.js
+root@f6513673f9f6:/home/joshua/todo# apt update
+root@f6513673f9f6:/home/joshua/todo# apt install vim
+root@f6513673f9f6:/home/joshua/todo# vim index.js
 ```
 
-![vim ](./assets/vim.jpg)
+![vim](./assets/vim.jpg)
 
 <style scoped>
 p {
@@ -483,10 +483,10 @@ p {
 
 ---
 
-# 😖 Happy now?
+# :confounded: Happy now?
 
 ```bash
-root@f6513673f9f6:/home/joshua/awesome-todo#
+root@f6513673f9f6:/home/joshua/todo#
 
 # Ctrl-p, Ctrl-q => Detach from container
 
@@ -494,56 +494,61 @@ $ docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
 f6513673f9f6   node      "docker-entrypoint.s…"   13 minutes ago   Up 13 minutes             dev
 
-$ docker cp dev:/home/joshua/awesome-todo .
+# Copying files out of the container
+$ docker cp dev:/home/joshua/todo .
 
 $ tree
 .
-└── awesome-todo
+└── todo
     ├── index.js
     └── package.json
 
 1 directory, 2 files
 
 # The real work begins! (launches Visual Studio Code)
-$ code awesome-todo
+$ code todo
 ```
 
 ---
 
-# ⏳ A few moments layer...
+# :hourglass_flowing_sand: A few moments layer...
 
 ```bash
 $ tree .
 .
-└── awesome-todo
+└── todo
     ├── package.json
     └── src
         └── main.js
 
 2 directories, 2 files
 
-$ cat awesome-todo/src/main.js
+$ cat todo/src/main.js
 console.log("I hate index.js files 😡")
 
-$ cat awesome-todo/package.json
+$ cat todo/package.json
 {
-  "name": "awesome-todo",
+  "name": "todo",
   "version": "1.0.0",
   "main": "src/main.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  }
 }
 
-$ docker cp ./awesome-todo dev:/home/joshua
+# Copying files to the container
+$ docker cp ./todo dev:/home/joshua
 ```
 
 ---
 
-# 👋 See you on the other side
+# :wave: See you on the other side
 
 ```bash
 $ docker attach dev
 
-root@f6513673f9f6:/home/joshua/awesome-todo# ls -lah
+root@f6513673f9f6:/home/joshua/todo# ls -lah
 total 20K
 drwxr-xr-x 3 node node 4.0K Nov 25 19:09 .
 drwxr-xr-x 3 root root 4.0K Nov 25 18:31 ..
@@ -551,32 +556,114 @@ drwxr-xr-x 3 root root 4.0K Nov 25 18:31 ..
 -rw-r--r-- 1 node node   96 Nov 25 19:06 package.json
 drwxr-xr-x 2 node node 4.0K Nov 25 19:07 src
 
-root@f6513673f9f6:/home/joshua/awesome-todo# node .
+root@f6513673f9f6:/home/joshua/todo# rm index.js
+
+root@f6513673f9f6:/home/joshua/todo# node .
 I hate index.js files 😡
+
+# I don't want to maintain and sync two copies of my code
+# There must be a better way...
 ```
 
 ---
 
-
-# ⛑️ Bind mount to the rescue!
+# :rescue_worker_helmet: Bind mount to the rescue!
 
 ```bash
-$ exit
-
 $ pwd
-/home/joshua/projects/joshua-barnett/docker-for-development/awesome-todo
+/home/joshua/projects/joshua-barnett/docker-for-development/todo
 
-$ docker run --rm --interactive --tty --workdir /srv/awesome-todo --name dev \
-# ⭐ New argument
---mount type=bind,source=`pwd`,target=/srv/awesome-todo \
-# 📝 Shorthand
---volume `pwd`:/srv/awesome-todo
+$ docker run --rm --interactive --tty --workdir /srv/todo --name dev \
+# ⭐ New mount argument
+--mount type=bind,source=`pwd`,target=/srv/todo \
+# 📝 Less verbose
+# --volume `pwd`:/srv/todo
 node \
 bash
+
+root@c9d70c16b644:/srv/todo# ls
+package.json  src
 ```
 
->- Only difference between them is `--mount` will throw an error if the host directory does not exist.
->- Whereas `--volume` will stub a missing host directory for you.
+- Only difference between them is `--mount` will throw an error if the host directory does not exist.
+- Whereas `--volume` will stub a missing host directory for you.
+
+---
+
+# :smiling_imp: The devil is in the details
+
+```bash
+# Inside the container (Slow! 🐌)
+root@c9d70c16b644:/srv/todo# wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   6%[>                           ] 185.17M  7.84MB/s    eta 6m 8s
+
+# Outside the container (Fast! 🐇)
+$ wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop  12%[==>                         ] 368.52M  16.1MB/s    eta 2m 52s
+
+# Change directory in container to /tmp
+root@c9d70c16b644:/tmp# cd /tmp
+
+# Also fast! 🐇
+root@c9d70c16b644:/tmp# wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   8%[=>                          ] 236.41M  15.9MB/s    eta 2m 40s
+```
+
+---
+
+<!--
+I was going to go into more detail here about how you can access the Docker VM directly.
+
+Explain a bit about how OverlayFS works, and other parts of how it is implemented on different platforms.
+
+However, I don't think I've got enough time for that.
+
+So I'll wave it away as magic for now.
+
+But here's an article explaining a bit more about how it works.
+
+Turns out sync file systems isn't just about moving and syncing files.
+
+If you want things like hot reload to work you will also need to propagate and communicate file events between systems, so it gets quite complicated.
+
+All your really need to know is bind mounts are great!
+
+But you should pick when to use them wisely because they don't work great on all platforms and can be very slow in certain use cases.
+
+Namely...
+
+- Installation of node_modules
+- Working directories for things like databases
+-->
+
+# :floppy_disk: The details...
+
+<iframe src="https://www.docker.com/blog/deep-dive-into-new-docker-desktop-filesharing-implementation/" alt="Deep Dive Into the New Docker Desktop filesharing Implementation Using FUSE"></iframe>
+
+<!-- ```bash
+$ docker inspect dev | jq '.[].GraphDriver.Data.MergedDir'
+"/var/lib/docker/overlay2/100be0d438a58870743f604ae5fbe49f46a2b3d1a0cc02a7809171396fff1b10/merged"
+
+# Enter Docker VM on macOS
+$ nc -U ~/Library/Containers/com.docker.docker/Data/debug-shell.sock
+
+# Inside Docker VM
+$ cd /var/lib/docker/overlay2/100be0d438a58870743f604ae5fbe49f46a2b3d1a0cc02a7809171396fff1b10/merged
+``` -->
+
+![bg right:40%](./assets/magic.gif)
+
+<style scoped>
+    iframe {
+        height: 100%;
+    }
+</style>
+
+
+<!-- <iframe src="https://www.docker.com/blog/deep-dive-into-new-docker-desktop-filesharing-implementation/"></iframe> -->
 
 <!-- <style scoped>
 section {
@@ -609,7 +696,7 @@ You might have a bunch of questions that you answered without even thinking twic
 <!-- ```shell
 $ yarn init
 yarn init v1.22.17
-question name (awesome-todo):
+question name (todo):
 question version (1.0.0):
 question description: Better than the rest?
 question entry point (index.js): src/main.js
