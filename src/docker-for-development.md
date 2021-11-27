@@ -682,9 +682,15 @@ $ cd /var/lib/docker/overlay2/100be0d438a58870743f604ae5fbe49f46a2b3d1a0cc02a780
 
 ---
 
-# :hole: It gets worse! (`node_modules`)
+# :hole: It gets worse!
 
-```
+<!--
+This problem with the bind mount implementation is exacerbated in I/O heavy use cases.
+
+Such as database data directories and node_modules installation.
+-->
+
+```shell
 # 🍏 Outside the container + inside bind mount (Fast! 🐇)
 $ time yarn install --frozen-lockfile 
 # -- snip ---
@@ -694,8 +700,8 @@ $ time yarn install --frozen-lockfile
 96% cpu
 50.398 total
 
-# 🍏 Inside the container + inside bind mount (Slow! 🐌)
-root@6001c575a574:/srv/awesome-todo# 
+# 🍏 Inside the container + inside bind mount (8x Slower! 🐌)
+root@6001c575a574:/srv/awesome-todo# time yarn install --frozen-lockfile
 # -- snip --
 Done in 402.74s.
 
@@ -709,6 +715,281 @@ root@6001c575a574:/srv/awesome-todo# du -sh node_modules packages/*/node_modules
 0       packages/client/node_modules
 0       packages/server/node_modules
 ```
+
+---
+
+# :thinking: How to handle `node_modules`?
+
+* Use 🐧 Linux (VM etc.) for development
+    * Not very inclusive 🤨
+* Install `node_modules` outside of the bind mount directory
+    * ❌ Makes `node_modules` inaccessible from the host
+        * ✅ But they are visible through debuggers
+    * Parent directory inside the container
+        * `yarn install --frozen-lockfile --modules-folder ../node_modules`
+        * ❌ Doesn't work if dependencies expecting to be in the project root (hardcoded)
+    * Symlink to path outside of project directory
+        * `node_modules -> /tmp/node_modules`
+        * ⚠️ May still not work in some cases
+    * Use a persistent Docker volume
+        * If you want to use cached `node_modules` from an existing Docker image
+        * ⚠️ Managing the volume becomes complicated
+
+<style scoped>
+    ul {
+        font-size: .9em;
+    }
+</style>
+
+---
+
+# :books: Docker volumes
+
+* ✅ No speed penalty like _**bind mounts**_
+* ✅ Use cases
+    * Backing up, restoring, migrating data
+    * Intermediate file storage
+    * Native file system behaviour
+    * High performance I/O
+        * e.g. Database directories
+* ⚠️ Data not easily accessible from host
+    * `docker cp` if necessary
+* 📄 [Manage data in Docker](https://docs.docker.com/storage/)
+
+---
+
+# :open_book: Example use of a Docker volume
+
+```bash
+# Start a MongoDB container running in the background
+$ docker run \
+--rm \     # Automatically remove the container when it exits
+--detach \ # Run container in background and print container ID
+--volume my_db_data_volume:/data/db \
+# Create a named volume called 'my_db_data_volume'
+# Mount the named volume to the path '/data/db' in the container
+--name my_db \ # Assign a name to the container
+mongo # Use the latest official MongoDB image
+
+# Show running containers
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS       NAMES
+a277c6f52683   mongo     "docker-entrypoint.s…"   3 minutes ago    Up 3 minutes    27017/tcp   my_db
+
+# Execute a mongo shell (alongside the already running mongod)
+$ docker exec --interactive --tty my_db mongo
+
+> use todo
+switched to db todo
+
+> db.items.insert({"description": "Task", "done": false})
+WriteResult({ "nInserted" : 1 })
+
+> exit
+
+$ docker rm --force my_db
+my_db
+```
+
+---
+
+```bash
+# No containers running at the moment
+$ docker ps --all
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+# But our MongoDB data volume still exists
+$ docker volume ls
+DRIVER    VOLUME NAME
+local     my_db_data_volume
+
+# Start the container again with the same arguments
+$ docker run \
+--rm \
+--detach \
+--volume my_db_data_volume:/data/db \
+--name my_db \
+# This time lets also publish the MongoDB port to our host
+--publish 27017:27017 \
+mongo
+
+# Query MongoDB via the shell for existing items
+$ docker exec my_db \
+mongo todo --quiet --eval 'db.items.find().forEach(printjson)'
+{
+        "_id" : ObjectId("61a27159b08ff2c5624a9bba"),
+        "description" : "Task",
+        "done" : false
+}
+
+# Can also use a GUI on our host 👉
+```
+
+![bg right:40%](./assets/compass.jpg)
+
+---
+
+# :spider_web: Docker networks
+
+- Every container is assigned to the default `bridge` network.
+
+
+    ```bash
+    $ docker network ls
+    NETWORK ID     NAME      DRIVER    SCOPE
+    f56f0ebff9c0   bridge    bridge    local
+    3aaf4000c115   host      host      local
+    861adb658ac5   none      null      local
+    ```
+
+---
+
+```json
+$ docker inspect my_db | jq '.[].NetworkSettings.Networks'
+{
+    "bridge": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "NetworkID": "f56f0ebff9c02f8c81a2cb4983740d70eae5f79968c49f282d3641a9fdea353e",
+        "EndpointID": "4111d8d341b634e8851d5a37fe06773e37930e7d5dcd9d5ab1f075803f0e6838",
+        "Gateway": "172.17.0.1",
+        "IPAddress": "172.17.0.2",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "MacAddress": "02:42:ac:11:00:02",
+        "DriverOpts": null
+    }
+}
+```
+
+---
+
+# :thumbsdown: Don't do this at home
+
+```bash
+# Creating a new 'client' container that will connect to 'my_db' through bridge
+$ docker run --rm --name my_client --interactive --tty mongo bash
+
+# Can't connect to 'my_db' container through 'localhost'.
+root@63dcb850b14f:/# mongo todo --quiet --eval 'db.items.find().forEach(printjson)'
+Error: could not connect to server 127.0.0.1:27017, connection attempt failed: SocketException:
+Error connecting to 127.0.0.1:27017 :: caused by :: Connection refused :
+connect@src/mongo/shell/mongo.js:372:17
+@(connect):3:6
+exception: connect failed
+exiting with code 1
+
+# ❌ Requires hardcoded IP address
+root@63dcb850b14f:/# mongo mongodb://172.17.0.2:27017/todo --quiet --eval 'db.items.find().forEach(printjson)'
+{
+        "_id" : ObjectId("61a2763c923c19ee6b178a5a"),
+        "description" : "Task",
+        "done" : false
+}
+```
+
+---
+
+# :thumbsup: Recommended way
+
+* Use `--network <name>` to create a user defined bridge network.
+* User-defined bridges provide automatic DNS resolution between containers.
+* User-defined bridges provide better isolation.
+* Containers can be attached and detached from user-defined networks on the fly.
+
+
+---
+
+# :bridge_at_night: Building bridges
+
+```shell
+# Create a user defined bridge network
+$ docker network create my_network
+ec58fc0d1375c280e609adc5086fd67697f55a8a3bfbde69eaaff65d9035a1ad
+
+$ docker network ls
+docker network ls
+NETWORK ID     NAME         DRIVER    SCOPE
+f56f0ebff9c0   bridge       bridge    local
+3aaf4000c115   host         host      local
+ec58fc0d1375   my_network   bridge    local 😊
+861adb658ac5   none         null      local
+
+# Recreate database container with '--network'
+docker run --rm --detach --volume my_db_data_volume:/data/db --name my_db --publish 27017:27017 \
+--network my_network \ # ⭐ New
+mongo
+
+# Recreate client container with '--network'
+docker run --rm --name my_client --interactive --tty \
+--network my_network \ # ⭐ New
+mongo \
+bash
+```
+
+---
+
+# :relieved: Much better
+
+```
+# Install dig for DNS querying
+root@924e075a1b8c:/# apt update && apt install --yes dnsutils
+
+# Query database container name 'my_db'
+root@924e075a1b8c:/# dig +short my_db
+172.19.0.2
+
+# ✅ Connecting to database using hostname
+root@63dcb850b14f:/# mongo mongodb://my_db:27017/todo --quiet --eval 'db.items.find().forEach(printjson)'
+{
+        "_id" : ObjectId("61a2763c923c19ee6b178a5a"),
+        "description" : "Task",
+        "done" : false
+}
+```
+
+---
+
+# :beach_umbrella: Example project `awesome-todo`
+
+* Database
+    * `mongod` - NoSQL database
+
+* Backend application
+    * `fastify` - Web framework
+    * `mongoose` - Data models
+    * `graphql` - API Schema
+    * `mercurius` - GraphQL API
+
+* Frontend application
+    * `create-react-app` - Frontend boilerplate
+    * `styled-components` - Minor styling tweaks
+    * `@apollo/client` - GraphQL client
+
+<style scoped>
+    ul {
+        font-size: 0.9em;
+    }
+</style>
+
+---
+
+# :page_facing_up: RTFM
+
+* Vague... :weary:
+    * Which version of Node.js? 
+    * Which version of Yarn?
+    * Which version of MongoDB?
+* Not future proof :warning:
+    * Will these steps still work
+    5+ years from now?
+* Cross platform?
+    * ...works on my machine :angry:
+
+![bg right:49%](./assets/rtfm.jpg)
 
 <!-- 
 ```bash
