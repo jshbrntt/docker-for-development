@@ -593,8 +593,8 @@ package.json  src
 # :smiling_imp: The devil is in the details
 
 ```bash
-# Inside the container (Slow! 🐌) [🍏]
-root@2439b2c5622d:/srv/todo# wget -q --show-progress \
+# Inside the container bind mount directory (Slow! 🐌)
+root@c9d70c16b644:/srv/todo# wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
 ubuntu-20.04.3-desktop   5%[>           ] 150.88M  5.11MB/s    eta 9m 12s
 
