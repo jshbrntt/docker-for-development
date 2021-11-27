@@ -680,6 +680,22 @@ $ cd /var/lib/docker/overlay2/100be0d438a58870743f604ae5fbe49f46a2b3d1a0cc02a780
     }
 </style>
 
+---
+
+# :hole: It gets worse!
+
+```bash
+root@a89e35bc7589:/srv/paysite-frontend# time yarn install --frozen-lockfile
+real    15m12.459s
+user    3m2.007s
+sys     2m52.669s
+
+$ du -sh node_modules */node_modules
+1.3G    node_modules
+20M     ma/node_modules
+136K    shared/node_modules
+64M     tour/node_modules
+```
 
 <!-- <iframe src="https://www.docker.com/blog/deep-dive-into-new-docker-desktop-filesharing-implementation/"></iframe> -->
 
