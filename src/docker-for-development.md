@@ -983,7 +983,7 @@ root@63dcb850b14f:/# mongo mongodb://my_db:27017/todo --quiet --eval 'db.items.f
     * Which version of Node.js? 
     * Which version of Yarn?
     * Which version of MongoDB?
-* Not future proof :warning:
+* Not very future proof :warning:
     * Will these steps still work
     5+ years from now?
 * What if port `3001` is taken?
