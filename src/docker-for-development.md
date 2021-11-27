@@ -590,49 +590,43 @@ package.json  src
 
 ---
 
-# :smiling_imp: The devil is in the details
+# :smiling_imp: The devil is in the implementation
 
 ```bash
-# Inside the container bind mount directory (Slow! 🐌)
-root@c9d70c16b644:/srv/todo# wget -q --show-progress \
-https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop   5%[>           ] 150.88M  5.11MB/s    eta 9m 12s
-
-# Outside the container (Fast! 🐇) [🍏]
+# 🍏 Outside the container + inside bind mount (Fast! 🐇)
 $ wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop   5%[>           ] 157.30M  44.7MB/s    eta 64s
+ubuntu-20.04.3-desktop   5%[=>          ] 157.30M  44.7MB/s    eta 64s
 
-# Change directory in container to /tmp [🍏]
-root@2439b2c5622d:/srv/todo# cd /tmp
+# 🍏 Inside the container + inside bind mount (Slow! 🐌)
+root@c9d70c16b644:/srv/todo# wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[=>          ] 150.88M  5.11MB/s    eta 9m 12s
 
-# Also fast! 🐇 [🍏]
-root@2439b2c5622d:/tmp# wget -q --show-progress \
+# 🍏 Inside the container + outside bind mount (Fast-ish! 🐇)
+root@c9d70c16b644:/tmp# wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
 ubuntu-20.04.3-desktop   5%[>           ] 161.04M  40.6MB/s    eta 69s
 ```
 
 ---
-# :herb: Grass is greener?
+# :seedling: Grass is greener?
 
 ```bash
-# Inside the container (Slow! 🐌) [🍏]
-root@2439b2c5622d:/srv/todo# wget -q --show-progress \
-https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop   5%[>           ] 150.88M  5.11MB/s    eta 9m 12s
-
-# Outside the container (Fast! 🐇) [🍏]
+# 🐧 Outside the container + inside bind mount (Fast! 🐇)
 $ wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop   5%[>           ] 157.30M  44.7MB/s    eta 64s
+ubuntu-20.04.3-desktop   5%[=>          ] 159.04M  45.1MB/s    eta 63s
 
-# Change directory in container to /tmp [🍏]
-root@2439b2c5622d:/srv/todo# cd /tmp
-
-# Also fast! 🐇 [🍏]
-root@2439b2c5622d:/tmp# wget -q --show-progress \
+# 🐧 Inside the container + inside bind mount (Fast! 🐇)
+root@9e3d5e4532e2:/srv/todo# wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop   5%[>           ] 152.45M  25.8MB/s    eta 2m 1s
+ubuntu-20.04.3-desktop   5%[=>          ] 160.96M  43.0MB/s    eta 67s
+
+# 🐧 Inside the container + outside bind mount (Fast! 🐇)
+root@9e3d5e4532e2:/tmp# wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[=>          ] 160.21M  45.4MB/s    eta 63s
 ```
 
 ---
@@ -662,8 +656,6 @@ Namely...
 - Working directories for things like databases
 -->
 
-# :floppy_disk: The details...
-
 <iframe src="https://www.docker.com/blog/deep-dive-into-new-docker-desktop-filesharing-implementation/" alt="Deep Dive Into the New Docker Desktop filesharing Implementation Using FUSE"></iframe>
 
 <!-- ```bash
@@ -680,6 +672,9 @@ $ cd /var/lib/docker/overlay2/100be0d438a58870743f604ae5fbe49f46a2b3d1a0cc02a780
 ![bg right:40%](./assets/magic.gif)
 
 <style scoped>
+    section {
+        padding: 0;
+    }
     iframe {
         height: 100%;
     }
