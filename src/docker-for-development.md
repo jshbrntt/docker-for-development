@@ -682,8 +682,35 @@ $ cd /var/lib/docker/overlay2/100be0d438a58870743f604ae5fbe49f46a2b3d1a0cc02a780
 
 ---
 
-# :hole: It gets worse!
+# :hole: It gets worse! (`node_modules`)
 
+```
+# 🍏 Outside the container + inside bind mount (Fast! 🐇)
+$ time yarn install --frozen-lockfile 
+# -- snip ---
+✨  Done in 50.21s.
+4.85s user
+23.67s system
+96% cpu
+50.398 total
+
+# 🍏 Inside the container + inside bind mount (Slow! 🐌)
+root@6001c575a574:/srv/awesome-todo# 
+# -- snip --
+Done in 402.74s.
+
+real    6m43.053s
+user    1m15.429s
+sys     1m10.757s
+
+# Size on disk
+root@6001c575a574:/srv/awesome-todo# du -sh node_modules packages/*/node_modules
+370M    node_modules
+0       packages/client/node_modules
+0       packages/server/node_modules
+```
+
+<!-- 
 ```bash
 root@a89e35bc7589:/srv/paysite-frontend# time yarn install --frozen-lockfile
 real    15m12.459s
@@ -696,14 +723,8 @@ $ du -sh node_modules */node_modules
 136K    shared/node_modules
 64M     tour/node_modules
 ```
+-->
 
-```
-root@a89e35bc7589:/srv/awesome-todo# time yarn install --frozen-lockfile
-# -- snip --
-real    7m20.837s
-user    1m22.494s
-sys     1m14.970s
-```
 
 <!-- <iframe src="https://www.docker.com/blog/deep-dive-into-new-docker-desktop-filesharing-implementation/"></iframe> -->
 
