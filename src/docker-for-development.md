@@ -697,6 +697,14 @@ $ du -sh node_modules */node_modules
 64M     tour/node_modules
 ```
 
+```
+root@a89e35bc7589:/srv/awesome-todo# time yarn install --frozen-lockfile
+# -- snip --
+real    7m20.837s
+user    1m22.494s
+sys     1m14.970s
+```
+
 <!-- <iframe src="https://www.docker.com/blog/deep-dive-into-new-docker-desktop-filesharing-implementation/"></iframe> -->
 
 <!-- <style scoped>
