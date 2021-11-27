@@ -986,6 +986,8 @@ root@63dcb850b14f:/# mongo mongodb://my_db:27017/todo --quiet --eval 'db.items.f
 * Not future proof :warning:
     * Will these steps still work
     5+ years from now?
+* What if port `3001` is taken?
+    * How do I change it?
 * Cross platform?
     * ...works on my machine :angry:
 
