@@ -435,10 +435,10 @@ root@f6513673f9f6:/home/joshua# cd todo/
 root@f6513673f9f6:/home/joshua/todo# yarn init --yes
 
 # Write some code
-root@f6513673f9f6:/home/joshua/todo# echo 'console.log("Hello World! 🥳")' > index.js
+root@f6513673f9f6:/home/joshua/todo# echo "console.log('Hello World! 🥳');" > index.js
 
 # Write some MORE code!
-root@f6513673f9f6:/home/joshua/todo# echo 'console.log("Look mum no vim! 😯")' >> index.js
+root@f6513673f9f6:/home/joshua/todo# echo "console.log('Look mum no vim! 😯');" >> index.js
 
 # Run the program
 root@f6513673f9f6:/home/joshua/todo# node .
@@ -524,7 +524,7 @@ $ tree .
 2 directories, 2 files
 
 $ cat todo/src/main.js
-console.log("I hate index.js files 😡")
+console.log('I hate index.js files 😡');
 
 $ cat todo/package.json
 {
