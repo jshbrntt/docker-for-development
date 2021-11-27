@@ -5,7 +5,7 @@
   "author": "Joshua Barnett <joshua@barne.tt>",
   "license": "MIT",
   "scripts": {
-    "start": "marp --html --server src",
+    "start": "marp --bespoke.progress --html --server src",
     "format": "prettier --write src",
     "lint": "prettier --check src"
   },
