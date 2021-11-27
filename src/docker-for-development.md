@@ -593,23 +593,46 @@ package.json  src
 # :smiling_imp: The devil is in the details
 
 ```bash
-# Inside the container (Slow! 🐌)
-root@c9d70c16b644:/srv/todo# wget -q --show-progress \
+# Inside the container (Slow! 🐌) [🍏]
+root@2439b2c5622d:/srv/todo# wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop   6%[>                           ] 185.17M  7.84MB/s    eta 6m 8s
+ubuntu-20.04.3-desktop   5%[>           ] 150.88M  5.11MB/s    eta 9m 12s
 
-# Outside the container (Fast! 🐇)
+# Outside the container (Fast! 🐇) [🍏]
 $ wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop  12%[==>                         ] 368.52M  16.1MB/s    eta 2m 52s
+ubuntu-20.04.3-desktop   5%[>           ] 157.30M  44.7MB/s    eta 64s
 
-# Change directory in container to /tmp
-root@c9d70c16b644:/tmp# cd /tmp
+# Change directory in container to /tmp [🍏]
+root@2439b2c5622d:/srv/todo# cd /tmp
 
-# Also fast! 🐇
-root@c9d70c16b644:/tmp# wget -q --show-progress \
+# Also fast! 🐇 [🍏]
+root@2439b2c5622d:/tmp# wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop   8%[=>                          ] 236.41M  15.9MB/s    eta 2m 40s
+ubuntu-20.04.3-desktop   5%[>           ] 152.45M  25.8MB/s    eta 2m 1s
+```
+
+---
+# :herb: Grass is greener?
+
+```bash
+# Inside the container (Slow! 🐌) [🍏]
+root@2439b2c5622d:/srv/todo# wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[>           ] 150.88M  5.11MB/s    eta 9m 12s
+
+# Outside the container (Fast! 🐇) [🍏]
+$ wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[>           ] 157.30M  44.7MB/s    eta 64s
+
+# Change directory in container to /tmp [🍏]
+root@2439b2c5622d:/srv/todo# cd /tmp
+
+# Also fast! 🐇 [🍏]
+root@2439b2c5622d:/tmp# wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[>           ] 152.45M  25.8MB/s    eta 2m 1s
 ```
 
 ---
