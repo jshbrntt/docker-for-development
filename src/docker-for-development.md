@@ -609,7 +609,7 @@ root@2439b2c5622d:/srv/todo# cd /tmp
 # Also fast! 🐇 [🍏]
 root@2439b2c5622d:/tmp# wget -q --show-progress \
 https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
-ubuntu-20.04.3-desktop   5%[>           ] 152.45M  25.8MB/s    eta 2m 1s
+ubuntu-20.04.3-desktop   5%[>           ] 161.04M  40.6MB/s    eta 69s
 ```
 
 ---
