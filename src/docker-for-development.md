@@ -989,9 +989,471 @@ root@63dcb850b14f:/# mongo mongodb://my_db:27017/todo --quiet --eval 'db.items.f
 * What if port `3001` is taken?
     * How do I change it?
 * Cross platform?
-    * ...works on my machine :angry:
+    * ...works on my machine :shrug:
+    * :angry:
 
 ![bg right:49%](./assets/rtfm.jpg)
+
+---
+
+# :trident: Dockerizing `awesome-todo`
+
+<!--
+Now we could put this command in our readme in addition to the previous commands.
+
+However, it would probably be a better user experience to put it in a shell script.
+-->
+
+*   Starting our development container.
+
+    ```bash
+    $ docker run \
+    --interactive \
+    --tty \
+    # Working directory
+    --workdir /srv/awesome-todo \
+    # Bind mount source into container
+    --volume `pwd`:/srv/awesome-todo \
+    # Latest Node.js LTS (at the moment)
+    node:16.13.0 \
+    bash
+    ```
+
+---
+
+# :penguin: Linux permissions (Gotcha)
+
+```bash
+# 📦 Default user?
+root@6de80090a66a:/srv/awesome-todo# whoami
+root
+
+# 📦 GID and UID of root are '0'
+root@6de80090a66a:/srv/awesome-todo# cat /etc/passwd | grep root
+root:x:0:0:root:/root:/bin/bash
+
+# 📦 Creating a empty file
+root@6de80090a66a:/srv/awesome-todo# touch cant-touch-this
+
+# 📦 File is owned by root inside container
+root@6de80090a66a:/srv/awesome-todo# ls -lah cant-touch-this
+-rw-r--r-- 1 root root 0 Nov 28 18:43 cant-touch-this
+```
+
+---
+
+```bash
+# 🖥️ Permissions on host
+$ ls -lh
+total 604K
+-rw-r--r-- 1 root   root      0 Nov 28 18:45 cant-touch-this
+-rw-r--r-- 1 joshua joshua  468 Nov 28 18:13 package.json
+drwxr-xr-x 5 joshua joshua 4.0K Nov 28 17:55 packages
+-rw-r--r-- 1 joshua joshua 1.3K Nov 27 16:44 README.md
+-rw-r--r-- 1 joshua joshua 589K Nov 28 18:23 yarn.lock
+
+# 🖥️ GID and UID of root
+$ cat /etc/passwd | grep root
+root:x:0:0:root:/root:/bin/bash
+
+# 🖥️ GID and UID of my user
+$ cat /etc/passwd | grep joshua
+joshua:x:1000:1000:,,,:/home/joshua:/usr/bin/zsh
+
+# 📦 Which user is 1000 inside the container?
+root@6de80090a66a:/srv/awesome-todo# cat /etc/passwd | grep 1000
+node:x:1000:1000::/home/node:/bin/bash
+```
+
+---
+
+# :memo: Amendment `--user`
+
+```bash
+# 🖥️ Creating development shell on host
+$ docker run \
+--rm \
+--interactive \
+--tty \
+--workdir /srv/awesome-todo \
+--volume `pwd`:/srv/awesome-todo \
+# ⭐ Specifying node as the user we want to start with
+--user node \
+node:16.13.0 \
+bash
+
+# 📦 Creating empty file
+node@b48146bd2871:/srv/awesome-todo$ touch can-touch-this
+
+# 📦 File owned by node inside container
+node@b48146bd2871:/srv/awesome-todo$ ls -lh can-touch-this
+-rw-r--r-- 1 node node 0 Nov 28 18:54 can-touch-this
+
+# 🖥️ File owned by me outside container
+$ ls -lh can-touch-this
+-rw-r--r-- 1 joshua joshua 0 Nov 28 18:54 can-touch-this
+```
+
+---
+
+# :inbox_tray: Installing `node_modules`
+
+```bash
+# 📦 Set the modules folder location outside of bind mount
+node@b48146bd2871:/srv/awesome-todo$ echo '--modules-folder /tmp/awesome-todo/node_modules' > .yarnrc
+
+# 📦 Try starting the server as a test
+node@b48146bd2871:/srv/awesome-todo$ yarn server
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ fastify start -d -w -l info -P src/app.mjs
+/bin/sh: 1: fastify: not found # 😵 What went wrong?
+
+# 📦 Printing ${PATH} to debug
+node@b48146bd2871:/srv/awesome-todo$ yarn server
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ echo ${PATH} | sed s/:/\\n/g | grep awesome-todo
+/srv/awesome-todo/packages/server/tmp/awesome-todo/node_modules/.bin
+/home/node/.config/yarn/link/tmp/awesome-todo/node_modules/.bin
+/srv/awesome-todo/tmp/awesome-todo/node_modules/.bin
+/srv/awesome-todo/tmp/awesome-todo/node_modules/.bin
+/home/node/.config/yarn/link/tmp/awesome-todo/node_modules/.bin
+/srv/awesome-todo/tmp/awesome-todo/node_modules/.bin
+Done in 0.52s.
+
+# 📦 Bug in yarn? 🤷
+```
+
+---
+
+```bash
+# 📦 Updating PATH to be correct
+node@b48146bd2871:/srv/awesome-todo$ export PATH="${PATH}:/tmp/awesome-todo/node_modules/.bin"
+
+# 📦 Node.js cannot resolve the node_modules because they are not in the parent
+node@b48146bd2871:/srv/awesome-todo$ yarn server
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ fastify start -d -w -l info -P src/app.mjs
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'config' imported from /srv/awesome-todo/packages/server/src/app.mjs
+# -- snip --
+
+# Symlinking /tmp/awesome-todo/node_modules into the parent
+node@b48146bd2871:/srv/awesome-todo$ ln -s /tmp/awesome-todo/node_modules
+
+# Third times the charm
+node@b48146bd2871:/srv/awesome-todo$ yarn server
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ fastify start -d -w -l info -P src/app.mjs
+Debugger listening on ws://0.0.0.0:9320/3867d4ef-3eb9-4f38-a781-e8f6eee92592
+For help, see: https://nodejs.org/en/docs/inspector
+
+# Good stuff 👍
+```
+
+---
+
+# :heavy_plus_sign: Adding new dependencies
+
+
+```bash
+# 📦 Adding prettier for formatting server code
+node@b48146bd2871:/srv/awesome-todo$ yarn workspace @awesome-todo/server add --dev prettier
+# -- snip --
+success Saved lockfile.
+success Saved 1 new dependency.
+info Direct dependencies
+info All dependencies
+└─ prettier@2.5.0
+Done in 8.43s.
+Done in 8.72s.
+
+# 📦 Adding lint script to server package
+node@b48146bd2871:/srv/awesome-todo$ cat packages/server/package.json | grep lint
+    "lint": "prettier --check config src test",
+
+# 📦 Running lint script
+node@b48146bd2871:/srv/awesome-todo$ yarn workspace @awesome-todo/server lint
+yarn workspace v1.22.15
+yarn run v1.22.15
+$ prettier --check config src test
+Checking formatting...
+All matched files use Prettier code style!
+Done in 1.03s.
+Done in 1.33s.
+```
+
+---
+
+# `Dockerfile`
+
+* We have made changes the development environment we want to share
+    * Installed dependencies `/tmp/awesome-todo/node_modules`
+    * Changed the `PATH` variable
+* Lets document and automate these changes by providing a `Dockerfile`
+
+---
+
+```dockerfile
+# ⚠ Cannot use sha256 if you want to support multi-arch 😔
+ARG NODE_VERSION="16.13.0"
+
+FROM node:${NODE_VERSION} AS base
+
+FROM base AS install
+
+ARG PROJECT="awesome-todo"
+
+WORKDIR /srv/${PROJECT}
+
+# If these files change...
+COPY package.json yarn.lock .yarnrc ./
+COPY packages/server/package.json packages/server/
+COPY packages/client/package.json packages/client/
+COPY packages/shared/package.json packages/shared/
+
+# ...this will run again when rebuilt
+RUN yarn install --frozen-lockfile
+
+FROM base AS dev
+
+ARG PROJECT="awesome-todo"
+
+# Copy just what we want from the previous stage
+COPY --from=install /tmp/${PROJECT}/node_modules /tmp/${PROJECT}/node_modules
+
+# Updating PATH variable
+ENV PATH="${PATH}:/tmp/${PROJECT}/node_modules/.bin"
+```
+
+---
+
+# :monkey: That is one chunky monkey
+
+```bash
+# 🔨 Enabling buildkit
+$ export DOCKER_BUILDKIT=1
+
+$ docker build --tag awesome-todo/dev --target node_modules .
+# -- snip --
+Successfully built afdf832b7e20
+Successfully tagged awesome-todo/dev:latest
+
+# Eye-wateringly large image of 1.17GB! 😭 
+$ docker image ls awesome-todo/dev
+REPOSITORY         TAG       IMAGE ID       CREATED         SIZE
+awesome-todo/dev   latest    5c404aa9d660   4 minutes ago   1.17GB
+
+# Build arguments to the rescue
+$ docker build --tag awesome-todo/dev/slim --target node_modules --build-arg NODE_VERSION=16.13.0-slim .
+
+# Bit better still quite large 🦣
+$ docker image ls awesome-todo/dev/slim
+REPOSITORY              TAG       IMAGE ID       CREATED         SIZE
+awesome-todo/dev/slim   latest    387425ea14b8   2 minutes ago   444MB
+
+# 🏔️ We can go smaller
+$ docker build --tag awesome-todo/dev/alpine --target node_modules --build-arg NODE_VERSION=16.13.0-alpine .
+
+# ⚖️ Bit better...
+$ docker image ls awesome-todo/dev/alpine
+REPOSITORY                TAG       IMAGE ID       CREATED          SIZE
+awesome-todo/dev/alpine   latest    283748b68275   49 seconds ago   380MB
+```
+
+---
+
+# :framed_picture: Using the pre-built image
+
+```bash
+# 🖥️ Creating development shell on host
+$ docker run \
+--rm \
+--interactive \
+--tty \
+--workdir /srv/awesome-todo \
+--volume `pwd`:/srv/awesome-todo \
+--user node \
+# ⭐ Using our pre-built image
+awesome-todo/dev/alpine \
+# ❌ `bash` does not exist in alpine, using `sh` instead
+yarn server
+
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ fastify start -d -w -l info -P src/app.mjs
+Debugger listening on ws://0.0.0.0:9320/c3b7b8e9-a248-4c5f-896c-a8111468a369
+For help, see: https://nodejs.org/en/docs/inspector
+
+# 💪 Great, no yarn install required
+```
+
+---
+
+# :window: What about the client?
+
+```bash
+# 🖥️ Creating development shell on host
+$ docker run \
+--rm \
+--interactive \
+--tty \
+--workdir /srv/awesome-todo \
+--volume `pwd`:/srv/awesome-todo \
+--user node \
+# ⭐ Using our pre-built image
+awesome-todo/dev/alpine \
+# ❌ `bash` does not exist in alpine, using `sh` instead
+yarn client
+
+Compiled successfully!
+
+You can now view @awesome-todo/client in the browser.
+
+  Local:            http://localhost:3001
+  On Your Network:  http://172.17.0.3:3001
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+```
+
+---
+
+# :yawning_face: Tired of repeating yourself?
+
+* Maintaining these commands is becoming cumbersome
+    * Lots of arguments
+    * Some times repeated values
+        * `--workdir /srv/awesome-todo`
+        * `--volume `pwd`:/srv/awesome-todo`
+
+* We can use **Docker Compose**! 🐙
+    * We need to create a `docker-compose.yaml`
+
+---
+
+# :octopus: `docker-compose.yaml`
+
+```yaml
+version: '3.8'
+
+services:
+  client:
+   # docker build
+    build:
+      args: # --build-arg
+        NODE_VERSION: 16.13.0-alpine
+    image: awesome-todo/dev/alpine # --tag
+    # docker run
+    working_dir: /srv/awesome-todo # --workdir
+    tty: true # --tty
+    stdin_open: true # --interactive
+    volumes: #
+      - .:/srv/awesome-todo # no more `pwd`, compose resolve cwd for us
+    command: yarn client
+```
+
+---
+
+# :confetti_ball: Adding server
+
+```yaml
+version: '3.8'
+
+services:
+  client:
+    build:
+      args:
+        NODE_VERSION: 16.13.0-alpine
+    image: awesome-todo/dev/alpine
+    working_dir: /srv/awesome-todo
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/srv/awesome-todo
+    command: yarn client
+  server: # Repeating ourselves?
+    build:
+      args:
+        NODE_VERSION: 16.13.0-alpine
+    image: awesome-todo/dev/alpine
+    working_dir: /srv/awesome-todo
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/srv/awesome-todo
+    command: yarn server # Apart from this one change?
+```
+
+---
+
+# :mage_man: Black magic
+
+
+```yaml
+version: '3.8'
+
+x-monorepo:
+  &monorepo # YAML ref
+  build:
+    args:
+      NODE_VERSION: 16.13.0-alpine
+  image: awesome-todo/dev/alpine
+  working_dir: /srv/awesome-todo # ⬅️ Still repeating myself here...
+  tty: true
+  stdin_open: true
+  volumes:
+    - .:/srv/awesome-todo # ⬅️ ...and here
+
+services:
+  client:
+    << : *monorepo # Merging only works with objects
+    command: yarn client
+  server:
+    << : *monorepo
+    command: yarn server
+```
+
+---
+
+# :writing_hand: Variable substitution
+
+```yaml
+version: '3.8'
+
+x-monorepo:
+  &monorepo # YAML ref
+  build:
+    args:
+      NODE_VERSION: 16.13.0-alpine
+  image: awesome-todo/dev/alpine
+  working_dir: ${WORKDIR} # ⬅️ Using substitution
+  tty: true
+  stdin_open: true
+  volumes:
+    - .:${WORKDIR} # ⬅️ Using substitution
+
+services:
+  client:
+    << : *monorepo # Merging only works with objects
+    command: yarn client
+  server:
+    << : *monorepo
+    command: yarn server
+```
+
+---
+
+# :onion: `Makefile`
+
+```makefile
+export WORKDIR = /srv/todo
+
+up:
+	docker compose up
+```
 
 <!-- 
 ```bash
