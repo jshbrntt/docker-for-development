@@ -1350,8 +1350,8 @@ services:
     working_dir: /srv/awesome-todo # --workdir
     tty: true # --tty
     stdin_open: true # --interactive
-    volumes: #
-      - .:/srv/awesome-todo # no more `pwd`, compose resolve cwd for us
+    volumes: # --volume
+      - .:/srv/awesome-todo # no more `pwd`, compose resolves the cwd for us
     command: yarn client
 ```
 
@@ -1450,10 +1450,208 @@ services:
 
 ```makefile
 export WORKDIR = /srv/todo
+export CLIENT_PORT = 3001
+export SERVER_PORT = 3000
+export MONGO_PORT = 27017
+export IMAGE_TAG = awesome-todo/dev/alpine
+export NODE_VERSION = 16.13.0-alpine
 
 up:
-	docker compose up
+	docker compose up $(SERVICE)
+
+down:
+	docker compose down
 ```
+
+---
+
+# :sparkles: Final touches
+
+```yaml
+version: '3.8'
+
+x-monorepo:
+  &monorepo
+  build:
+    args:
+      NODE_VERSION: ${NODE_VERSION}
+  image: ${IMAGE_TAG}
+  working_dir: ${WORKDIR}
+  tty: true
+  stdin_open: true
+  volumes:
+    - .:${WORKDIR}
+
+services:
+  database:
+    image: mongo:5.0.4
+    volumes:
+      - mongo_data_db:/data/db
+    ports:
+      - ${MONGO_PORT}:27017
+  server:
+    << : *monorepo
+    command: yarn server
+    environment:
+      MONGO_URI: mongodb://database:27017/todo
+    ports:
+      - ${SERVER_PORT}:3000
+  client:
+    << : *monorepo
+    command: yarn client
+    ports:
+      - ${CLIENT_PORT}:3000
+
+volumes:
+  mongo_data_db:
+```
+
+---
+
+# :steam_locomotive: Portable CI workflows
+
+```yaml
+name: Awesome TODO CI
+
+on:
+  pull_request: ~
+  push:
+    branches:
+      - master
+      - develop
+
+env:
+  DOCKER_USERNAME: ${{ github.actor }}
+  DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Login
+        run: make login
+      - name: Lint
+        run: make lint
+      - name: Push
+        run: make push
+```
+
+---
+
+# :crossed_fingers: Image caching
+
+```
+make lint
+docker compose run --rm server yarn lint
+[+] Running 2/1
+ ⠿ Network awesome-todo_default         Created                                                                           0.4s
+ ⠿ Volume "awesome-todo_mongo_data_db"  Created                                                                           0.0s
+[+] Running 6/6
+ ⠿ server Pulled                                                                                                         11.7s
+   ⠿ 97518928ae5f Already exists                                                                                          0.0s
+   ⠿ 784cd1fd612b Already exists                                                                                          0.0s
+   ⠿ 0ec5d186b713 Already exists                                                                                          0.0s
+   ⠿ 98dc27ad6276 Already exists                                                                                          0.0s
+   ⠿ d6532878b3da Pull complete                                                                                           9.9s
+[+] Building 0.2s (14/14) FINISHED
+ => [internal] load build definition from Dockerfile                                                                      0.1s
+ => => transferring dockerfile: 785B                                                                                      0.0s
+ => [internal] load .dockerignore                                                                                         0.1s
+ => => transferring context: 53B                                                                                          0.0s
+ => [internal] load metadata for docker.io/library/node:16.13.0-alpine                                                    0.0s
+ => [base 1/1] FROM docker.io/library/node:16.13.0-alpine                                                                 0.0s
+ => [internal] load build context                                                                                         0.1s
+ => => transferring context: 605.57kB                                                                                     0.0s
+ => CACHED [install 1/6] WORKDIR /srv/awesome-todo                                                                        0.0s
+ => CACHED [install 2/6] COPY package.json yarn.lock .yarnrc ./                                                           0.0s
+ => CACHED [install 3/6] COPY packages/server/package.json packages/server/                                               0.0s
+ => CACHED [install 4/6] COPY packages/client/package.json packages/client/                                               0.0s
+ => CACHED [install 5/6] COPY packages/shared/package.json packages/shared/                                               0.0s
+ => CACHED [install 6/6] RUN yarn install --frozen-lockfile                                                               0.0s
+ => CACHED [dev 1/1] COPY --from=install /tmp/awesome-todo/node_modules /tmp/awesome-todo/node_modules                    0.0s
+ => exporting to image                                                                                                    0.0s
+ => => exporting layers                                                                                                   0.0s
+ => => writing image sha256:12eb9c609df4ebb4612e256edfcdb4b88ab8fa0b8d72e9f1170313ef1abcb81b                              0.0s
+ => => naming to docker.pkg.github.com/joshua-barnett/awesome-todo/dev                                                    0.0s
+ => exporting cache                                                                                                       0.0s
+ => => preparing build cache for export                                                                                   0.0s
+```
+
+---
+
+```
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+yarn run v1.22.15
+$ yarn workspaces run lint
+
+> @awesome-todo/client
+$ prettier --check public src
+Checking formatting...
+All matched files use Prettier code style!
+
+> @awesome-todo/server
+$ prettier --check config src test
+Checking formatting...
+All matched files use Prettier code style!
+
+> @awesome-todo/shared
+$ prettier --check src
+Checking formatting...
+All matched files use Prettier code style!
+Done in 4.57s.
+```
+
+---
+
+# :film_projector: Demo
+
+```shell
+make up
+docker compose up --detach
+[+] Running 3/3
+ ⠿ client Pulled                                                                                                          1.9s
+ ⠿ database Pulled                                                                                                        1.6s
+ ⠿ server Pulled                                                                                                          2.6s
+[+] Building 0.2s (14/14) FINISHED
+ => [internal] load build definition from Dockerfile                                                                      0.1s
+ => => transferring dockerfile: 785B                                                                                      0.0s
+ => [internal] load .dockerignore                                                                                         0.1s
+ => => transferring context: 53B                                                                                          0.0s
+ => [internal] load metadata for docker.io/library/node:16.13.0-alpine                                                    0.0s
+ => [internal] load build context                                                                                         0.1s
+ => => transferring context: 605.57kB                                                                                     0.0s
+ => [base 1/1] FROM docker.io/library/node:16.13.0-alpine                                                                 0.0s
+ => CACHED [install 1/6] WORKDIR /srv/awesome-todo                                                                        0.0s
+ => CACHED [install 2/6] COPY package.json yarn.lock .yarnrc ./                                                           0.0s
+ => CACHED [install 3/6] COPY packages/server/package.json packages/server/                                               0.0s
+ => CACHED [install 4/6] COPY packages/client/package.json packages/client/                                               0.0s
+ => CACHED [install 5/6] COPY packages/shared/package.json packages/shared/                                               0.0s
+ => CACHED [install 6/6] RUN yarn install --frozen-lockfile                                                               0.0s
+ => CACHED [dev 1/1] COPY --from=install /tmp/awesome-todo/node_modules /tmp/awesome-todo/node_modules                    0.0s
+ => exporting to image                                                                                                    0.0s
+ => => exporting layers                                                                                                   0.0s
+ => => writing image sha256:12eb9c609df4ebb4612e256edfcdb4b88ab8fa0b8d72e9f1170313ef1abcb81b                              0.0s
+ => => naming to docker.pkg.github.com/joshua-barnett/awesome-todo/dev                                                    0.0s
+ => exporting cache                                                                                                       0.0s
+ => => preparing build cache for export                                                                                   0.0s
+
+[+] Running 5/5
+ ⠿ Network awesome-todo_default         Created                                                                           0.0s
+ ⠿ Volume "awesome-todo_mongo_data_db"  Created                                                                           0.0s
+ ⠿ Container awesome-todo-database-1    Started                                                                           1.2s
+ ⠿ Container awesome-todo-server-1      Started                                                                           1.2s
+ ⠿ Container awesome-todo-client-1      Started                                                                           1.0s
+ ```
+
+---
+
+# :raising_hand: Questions?
+
+![questions](./assets/questions.gif)
+
 
 <!-- 
 ```bash
