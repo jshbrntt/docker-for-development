@@ -62,7 +62,7 @@ No!
 
 -->
 
-<script id="asciicast-S9s0ABJSdsP8uLjgcuAPQiStk" src="https://asciinema.org/a/S9s0ABJSdsP8uLjgcuAPQiStk.js" data-size="big" async></script>
+<script id="asciicast-TGCwEdSUM2tFdsuR6RW9S99O7" src="https://asciinema.org/a/TGCwEdSUM2tFdsuR6RW9S99O7.js" data-size="big" async></script>
 
 <style scoped>
 section {
