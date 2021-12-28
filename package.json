@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "marp --bespoke.progress --html --server src",
+    "build": "marp --bespoke.progress --html src -o index.html",
     "format": "prettier --write src",
     "lint": "prettier --check src"
   },
