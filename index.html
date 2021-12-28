@@ -1,0 +1,1534 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{-webkit-tap-highlight-color:transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:80%;outline:none;padding:0;transition:opacity .2s linear}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled{cursor:not-allowed;opacity:15%!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover{opacity:100%}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active{opacity:60%}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDAgMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwIDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;opacity:100%;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{-webkit-animation-name:__bespoke_marp__!important;animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:100%;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;will-change:transform;z-index:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:80%}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:transparent}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current next" minmax(140px,1fr) "current note" 2fr "info    note" 3em/2fr 1fr;height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:transparent;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{word-wrap:break-word;box-sizing:border-box;font-size:1.1em;height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;scrollbar-color:hsla(0,0%,93%,.5) transparent;scrollbar-width:thin;white-space:pre-wrap;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:hsla(0,0%,93%,.5);border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{display:block;height:auto;width:100%}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{position:static}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{content:""}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{position:relative}}div#p>svg>foreignObject>section [data-marp-fitting-svg-content]{display:table;white-space:nowrap;width:-webkit-max-content;width:-moz-max-content;width:max-content}div#p>svg>foreignObject>section [data-marp-fitting-svg-content-wrap]{white-space:pre}div#p>svg>foreignObject>section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}
+/*!
+ * Marp default theme.
+ *
+ * @theme default
+ * @author Yuki Hattori
+ *
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */div#p>svg>foreignObject>section{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;background-color:#fff;color:#24292f;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;line-height:1.5;margin:0}div#p>svg>foreignObject>section{--marpit-root-font-size:16px}div#p>svg>foreignObject>section .octicon{fill:currentColor;display:inline-block;vertical-align:text-bottom}div#p>svg>foreignObject>section h1:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h2:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h3:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h4:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h5:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h6:hover .anchor .octicon-link:before{background-color:currentColor;content:" ";display:inline-block;height:16px;-webkit-mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0z"/></svg>');mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0z"/></svg>');width:16px}div#p>svg>foreignObject>section details,div#p>svg>foreignObject>section figcaption,div#p>svg>foreignObject>section figure{display:block}div#p>svg>foreignObject>section summary{display:list-item}div#p>svg>foreignObject>section a{background-color:transparent;color:#0969da;text-decoration:none}div#p>svg>foreignObject>section a:active,div#p>svg>foreignObject>section a:hover{outline-width:0}div#p>svg>foreignObject>section abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}div#p>svg>foreignObject>section b,div#p>svg>foreignObject>section strong{font-weight:600}div#p>svg>foreignObject>section dfn{font-style:italic}div#p>svg>foreignObject>section h1{border-bottom:1px solid #d8dee4;font-size:2em;font-weight:600;margin:.67em 0;padding-bottom:.3em}div#p>svg>foreignObject>section mark{background-color:#ff0;color:#24292f}div#p>svg>foreignObject>section small{font-size:90%}div#p>svg>foreignObject>section sub,div#p>svg>foreignObject>section sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}div#p>svg>foreignObject>section sub{bottom:-.25em}div#p>svg>foreignObject>section sup{top:-.5em}div#p>svg>foreignObject>section img{background-color:#fff;border-style:none;box-sizing:content-box;max-width:100%}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section kbd,div#p>svg>foreignObject>section pre,div#p>svg>foreignObject>section samp{font-family:monospace,monospace;font-size:1em}div#p>svg>foreignObject>section figure{margin:1em 40px}div#p>svg>foreignObject>section hr{background:transparent;background-color:#d0d7de;border:0;box-sizing:content-box;height:.25em;margin:24px 0;overflow:hidden;padding:0}div#p>svg>foreignObject>section [type=reset],div#p>svg>foreignObject>section [type=submit],div#p>svg>foreignObject>section html [type=button]{-webkit-appearance:button}div#p>svg>foreignObject>section [type=button]::-moz-focus-inner,div#p>svg>foreignObject>section [type=reset]::-moz-focus-inner,div#p>svg>foreignObject>section [type=submit]::-moz-focus-inner{border-style:none;padding:0}div#p>svg>foreignObject>section [type=button]:-moz-focusring,div#p>svg>foreignObject>section [type=reset]:-moz-focusring,div#p>svg>foreignObject>section [type=submit]:-moz-focusring{outline:1px dotted ButtonText}div#p>svg>foreignObject>section [type=checkbox],div#p>svg>foreignObject>section [type=radio]{box-sizing:border-box;padding:0}div#p>svg>foreignObject>section [type=number]::-webkit-inner-spin-button,div#p>svg>foreignObject>section [type=number]::-webkit-outer-spin-button{height:auto}div#p>svg>foreignObject>section [type=search]{-webkit-appearance:textfield;outline-offset:-2px}div#p>svg>foreignObject>section [type=search]::-webkit-search-cancel-button,div#p>svg>foreignObject>section [type=search]::-webkit-search-decoration{-webkit-appearance:none}div#p>svg>foreignObject>section ::-webkit-input-placeholder{color:inherit;opacity:.54}div#p>svg>foreignObject>section ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}div#p>svg>foreignObject>section a:hover{text-decoration:underline}div#p>svg>foreignObject>section hr:after,div#p>svg>foreignObject>section hr:before{content:"";display:table}div#p>svg>foreignObject>section hr:after{clear:both}div#p>svg>foreignObject>section table{border-collapse:collapse;border-spacing:0;display:block;max-width:100%;overflow:auto;width:-webkit-max-content;width:-moz-max-content;width:max-content}div#p>svg>foreignObject>section td,div#p>svg>foreignObject>section th{padding:0}div#p>svg>foreignObject>section details summary{cursor:pointer}div#p>svg>foreignObject>section details:not([open])>:not(summary){display:none!important}div#p>svg>foreignObject>section kbd{background-color:#f6f8fa;border:1px solid rgba(175,184,193,.2);border-radius:6px;box-shadow:inset 0 -1px 0 rgba(175,184,193,.2);color:#24292f;display:inline-block;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2,div#p>svg>foreignObject>section h3,div#p>svg>foreignObject>section h4,div#p>svg>foreignObject>section h5,div#p>svg>foreignObject>section h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}div#p>svg>foreignObject>section h2{border-bottom:1px solid #d8dee4;font-size:1.5em;font-weight:600;padding-bottom:.3em}div#p>svg>foreignObject>section h3{font-size:1.25em;font-weight:600}div#p>svg>foreignObject>section h4{font-size:1em;font-weight:600}div#p>svg>foreignObject>section h5{font-size:.875em;font-weight:600}div#p>svg>foreignObject>section h6{color:#57606a;font-size:.85em;font-weight:600}div#p>svg>foreignObject>section p{margin-bottom:10px;margin-top:0}div#p>svg>foreignObject>section blockquote{border-left:.25em solid #d0d7de;color:#57606a;margin:0;padding:0 1em}div#p>svg>foreignObject>section ol,div#p>svg>foreignObject>section ul{margin-bottom:0;margin-top:0;padding-left:2em}div#p>svg>foreignObject>section ol ol,div#p>svg>foreignObject>section ul ol{list-style-type:lower-roman}div#p>svg>foreignObject>section ol ol ol,div#p>svg>foreignObject>section ol ul ol,div#p>svg>foreignObject>section ul ol ol,div#p>svg>foreignObject>section ul ul ol{list-style-type:lower-alpha}div#p>svg>foreignObject>section dd{margin-left:0}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section pre,div#p>svg>foreignObject>section tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}div#p>svg>foreignObject>section pre{word-wrap:normal;margin-bottom:0;margin-top:0}div#p>svg>foreignObject>section :-ms-input-placeholder{color:#6e7781;opacity:1}div#p>svg>foreignObject>section ::-moz-placeholder{color:#6e7781;opacity:1}div#p>svg>foreignObject>section ::placeholder{color:#6e7781;opacity:1}div#p>svg>foreignObject>section .pl-c{color:#6e7781}div#p>svg>foreignObject>section .pl-c1,div#p>svg>foreignObject>section .pl-s .pl-v{color:#0550ae}div#p>svg>foreignObject>section .pl-e,div#p>svg>foreignObject>section .pl-en{color:#8250df}div#p>svg>foreignObject>section .pl-s .pl-s1,div#p>svg>foreignObject>section .pl-smi{color:#24292f}div#p>svg>foreignObject>section .pl-ent{color:#116329}div#p>svg>foreignObject>section .pl-k{color:#cf222e}div#p>svg>foreignObject>section .pl-pds,div#p>svg>foreignObject>section .pl-s,div#p>svg>foreignObject>section .pl-s .pl-pse .pl-s1,div#p>svg>foreignObject>section .pl-sr,div#p>svg>foreignObject>section .pl-sr .pl-cce,div#p>svg>foreignObject>section .pl-sr .pl-sra,div#p>svg>foreignObject>section .pl-sr .pl-sre{color:#0a3069}div#p>svg>foreignObject>section .pl-smw,div#p>svg>foreignObject>section .pl-v{color:#953800}div#p>svg>foreignObject>section .pl-bu{color:#82071e}div#p>svg>foreignObject>section .pl-ii{background-color:#82071e;color:#f6f8fa}div#p>svg>foreignObject>section .pl-c2{background-color:#cf222e;color:#f6f8fa}div#p>svg>foreignObject>section .pl-sr .pl-cce{color:#116329;font-weight:700}div#p>svg>foreignObject>section .pl-ml{color:#3b2300}div#p>svg>foreignObject>section .pl-mh,div#p>svg>foreignObject>section .pl-mh .pl-en,div#p>svg>foreignObject>section .pl-ms{color:#0550ae;font-weight:700}div#p>svg>foreignObject>section .pl-mi{color:#24292f;font-style:italic}div#p>svg>foreignObject>section .pl-mb{color:#24292f;font-weight:700}div#p>svg>foreignObject>section .pl-md{background-color:#ffebe9;color:#82071e}div#p>svg>foreignObject>section .pl-mi1{background-color:#dafbe1;color:#116329}div#p>svg>foreignObject>section .pl-mc{background-color:#ffd8b5;color:#953800}div#p>svg>foreignObject>section .pl-mi2{background-color:#0550ae;color:#eaeef2}div#p>svg>foreignObject>section .pl-mdr{color:#8250df;font-weight:700}div#p>svg>foreignObject>section .pl-ba{color:#57606a}div#p>svg>foreignObject>section .pl-sg{color:#8c959f}div#p>svg>foreignObject>section .pl-corl{color:#0a3069;text-decoration:underline}div#p>svg>foreignObject>section [data-catalyst]{display:block}div#p>svg>foreignObject>section g-emoji{font-family:Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;font-size:1em;font-style:normal!important;font-weight:400;line-height:1;vertical-align:-.075em}div#p>svg>foreignObject>section g-emoji img{height:1em;width:1em}div#p>svg>foreignObject>section:after,div#p>svg>foreignObject>section:before{
+  /* content:""; */display:table}div#p>svg>foreignObject>section:after{clear:both}div#p>svg>foreignObject>section>:first-child{margin-top:0!important}div#p>svg>foreignObject>section>:last-child{margin-bottom:0!important}div#p>svg>foreignObject>section a:not([href]){color:inherit;text-decoration:none}div#p>svg>foreignObject>section .absent{color:#cf222e}div#p>svg>foreignObject>section .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}div#p>svg>foreignObject>section .anchor:focus{outline:none}div#p>svg>foreignObject>section blockquote,div#p>svg>foreignObject>section details,div#p>svg>foreignObject>section dl,div#p>svg>foreignObject>section ol,div#p>svg>foreignObject>section p,div#p>svg>foreignObject>section pre,div#p>svg>foreignObject>section table,div#p>svg>foreignObject>section ul{margin-bottom:16px;margin-top:0}div#p>svg>foreignObject>section blockquote>:first-child{margin-top:0}div#p>svg>foreignObject>section blockquote>:last-child{margin-bottom:0}div#p>svg>foreignObject>section sup>a:before{content:"["}div#p>svg>foreignObject>section sup>a:after{content:"]"}div#p>svg>foreignObject>section h1 .octicon-link,div#p>svg>foreignObject>section h2 .octicon-link,div#p>svg>foreignObject>section h3 .octicon-link,div#p>svg>foreignObject>section h4 .octicon-link,div#p>svg>foreignObject>section h5 .octicon-link,div#p>svg>foreignObject>section h6 .octicon-link{color:#24292f;vertical-align:middle;visibility:hidden}div#p>svg>foreignObject>section h1:hover .anchor,div#p>svg>foreignObject>section h2:hover .anchor,div#p>svg>foreignObject>section h3:hover .anchor,div#p>svg>foreignObject>section h4:hover .anchor,div#p>svg>foreignObject>section h5:hover .anchor,div#p>svg>foreignObject>section h6:hover .anchor{text-decoration:none}div#p>svg>foreignObject>section h1:hover .anchor .octicon-link,div#p>svg>foreignObject>section h2:hover .anchor .octicon-link,div#p>svg>foreignObject>section h3:hover .anchor .octicon-link,div#p>svg>foreignObject>section h4:hover .anchor .octicon-link,div#p>svg>foreignObject>section h5:hover .anchor .octicon-link,div#p>svg>foreignObject>section h6:hover .anchor .octicon-link{visibility:visible}div#p>svg>foreignObject>section h1 code,div#p>svg>foreignObject>section h1 tt,div#p>svg>foreignObject>section h2 code,div#p>svg>foreignObject>section h2 tt,div#p>svg>foreignObject>section h3 code,div#p>svg>foreignObject>section h3 tt,div#p>svg>foreignObject>section h4 code,div#p>svg>foreignObject>section h4 tt,div#p>svg>foreignObject>section h5 code,div#p>svg>foreignObject>section h5 tt,div#p>svg>foreignObject>section h6 code,div#p>svg>foreignObject>section h6 tt{font-size:inherit;padding:0 .2em}div#p>svg>foreignObject>section ol.no-list,div#p>svg>foreignObject>section ul.no-list{list-style-type:none;padding:0}div#p>svg>foreignObject>section ol[type="1"]{list-style-type:decimal}div#p>svg>foreignObject>section ol[type=a]{list-style-type:lower-alpha}div#p>svg>foreignObject>section ol[type=i]{list-style-type:lower-roman}div#p>svg>foreignObject>section div>ol:not([type]){list-style-type:decimal}div#p>svg>foreignObject>section ol ol,div#p>svg>foreignObject>section ol ul,div#p>svg>foreignObject>section ul ol,div#p>svg>foreignObject>section ul ul{margin-bottom:0;margin-top:0}div#p>svg>foreignObject>section li>p{margin-top:16px}div#p>svg>foreignObject>section li+li{margin-top:.25em}div#p>svg>foreignObject>section dl{padding:0}div#p>svg>foreignObject>section dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}div#p>svg>foreignObject>section dl dd{margin-bottom:16px;padding:0 16px}div#p>svg>foreignObject>section table th{font-weight:600}div#p>svg>foreignObject>section table td,div#p>svg>foreignObject>section table th{border:1px solid #d0d7de;padding:6px 13px}div#p>svg>foreignObject>section table tr{background-color:#fff;border-top:1px solid #d8dee4}div#p>svg>foreignObject>section table tr:nth-child(2n){background-color:#f6f8fa}div#p>svg>foreignObject>section table img{background-color:transparent}div#p>svg>foreignObject>section img[align=right]{padding-left:20px}div#p>svg>foreignObject>section img[align=left]{padding-right:20px}div#p>svg>foreignObject>section .emoji{background-color:transparent;max-width:none;vertical-align:text-top}div#p>svg>foreignObject>section span.frame,div#p>svg>foreignObject>section span.frame>span{display:block;overflow:hidden}div#p>svg>foreignObject>section span.frame>span{border:1px solid #d0d7de;float:left;margin:13px 0 0;padding:7px;width:auto}div#p>svg>foreignObject>section span.frame span img{display:block;float:left}div#p>svg>foreignObject>section span.frame span span{clear:both;color:#24292f;display:block;padding:5px 0 0}div#p>svg>foreignObject>section span.align-center{clear:both;display:block;overflow:hidden}div#p>svg>foreignObject>section span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}div#p>svg>foreignObject>section span.align-center span img{margin:0 auto;text-align:center}div#p>svg>foreignObject>section span.align-right{clear:both;display:block;overflow:hidden}div#p>svg>foreignObject>section span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}div#p>svg>foreignObject>section span.align-right span img{margin:0;text-align:right}div#p>svg>foreignObject>section span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}div#p>svg>foreignObject>section span.float-left span{margin:13px 0 0}div#p>svg>foreignObject>section span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}div#p>svg>foreignObject>section span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section tt{background-color:rgba(175,184,193,.2);border-radius:6px;font-size:85%;margin:0;padding:.2em .4em}div#p>svg>foreignObject>section code br,div#p>svg>foreignObject>section tt br{display:none}div#p>svg>foreignObject>section del code{text-decoration:inherit}div#p>svg>foreignObject>section pre code{font-size:100%}div#p>svg>foreignObject>section pre>code{background:transparent;border:0;margin:0;padding:0;white-space:pre;word-break:normal}div#p>svg>foreignObject>section .highlight{margin-bottom:16px}div#p>svg>foreignObject>section .highlight pre{margin-bottom:0;word-break:normal}div#p>svg>foreignObject>section pre{background-color:#f6f8fa;border-radius:6px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}div#p>svg>foreignObject>section pre code,div#p>svg>foreignObject>section pre tt{word-wrap:normal;background-color:transparent;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}div#p>svg>foreignObject>section .csv-data td,div#p>svg>foreignObject>section .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}div#p>svg>foreignObject>section .csv-data .blob-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}div#p>svg>foreignObject>section .csv-data tr{border-top:0}div#p>svg>foreignObject>section .csv-data th{background:#f6f8fa;border-top:0;font-weight:600}div#p>svg>foreignObject>section .footnotes{border-top:1px solid #d0d7de;color:#57606a;font-size:12px}div#p>svg>foreignObject>section div#p>svg>foreignObject>section section.footnotes{--marpit-root-font-size:12px}div#p>svg>foreignObject>section .footnotes ol{padding-left:16px}div#p>svg>foreignObject>section .footnotes li{position:relative}div#p>svg>foreignObject>section .footnotes li:target:before{border:2px solid #0969da;border-radius:6px;bottom:-8px;content:"";left:-24px;pointer-events:none;position:absolute;right:-8px;top:-8px}div#p>svg>foreignObject>section .footnotes li:target{color:#24292f}div#p>svg>foreignObject>section .footnotes .data-footnote-backref g-emoji{font-family:monospace}div#p>svg>foreignObject>section [hidden]{display:none!important}div#p>svg>foreignObject>section ::-webkit-calendar-picker-indicator{filter:invert(50%)}div#p>svg>foreignObject>section .hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}div#p>svg>foreignObject>section .hljs-comment,div#p>svg>foreignObject>section .hljs-meta{color:#969896}div#p>svg>foreignObject>section .hljs-emphasis,div#p>svg>foreignObject>section .hljs-quote,div#p>svg>foreignObject>section .hljs-strong,div#p>svg>foreignObject>section .hljs-template-variable,div#p>svg>foreignObject>section .hljs-variable{color:#df5000}div#p>svg>foreignObject>section .hljs-keyword,div#p>svg>foreignObject>section .hljs-selector-tag,div#p>svg>foreignObject>section .hljs-type{color:#d73a49}div#p>svg>foreignObject>section .hljs-attribute,div#p>svg>foreignObject>section .hljs-bullet,div#p>svg>foreignObject>section .hljs-literal,div#p>svg>foreignObject>section .hljs-symbol{color:#0086b3}div#p>svg>foreignObject>section .hljs-name,div#p>svg>foreignObject>section .hljs-section{color:#63a35c}div#p>svg>foreignObject>section .hljs-tag{color:#333}div#p>svg>foreignObject>section .hljs-attr,div#p>svg>foreignObject>section .hljs-selector-attr,div#p>svg>foreignObject>section .hljs-selector-class,div#p>svg>foreignObject>section .hljs-selector-id,div#p>svg>foreignObject>section .hljs-selector-pseudo,div#p>svg>foreignObject>section .hljs-title{color:#6f42c1}div#p>svg>foreignObject>section .hljs-addition{background-color:#eaffea;color:#55a532}div#p>svg>foreignObject>section .hljs-deletion{background-color:#ffecec;color:#bd2c00}div#p>svg>foreignObject>section .hljs-link{text-decoration:underline}div#p>svg>foreignObject>section .hljs-number{color:#005cc5}div#p>svg>foreignObject>section .hljs-string{color:#032f62}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{max-height:563px}div#p>svg>foreignObject>section h1{color:#246;font-size:1.6em}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2{border-bottom:none}div#p>svg>foreignObject>section h2{font-size:1.3em}div#p>svg>foreignObject>section h3{font-size:1.1em}div#p>svg>foreignObject>section h4{font-size:1.05em}div#p>svg>foreignObject>section h5{font-size:1em}div#p>svg>foreignObject>section h6{font-size:.9em}div#p>svg>foreignObject>section h1 strong,div#p>svg>foreignObject>section h2 strong,div#p>svg>foreignObject>section h3 strong,div#p>svg>foreignObject>section h4 strong,div#p>svg>foreignObject>section h5 strong,div#p>svg>foreignObject>section h6 strong{color:#48c;font-weight:inherit}div#p>svg>foreignObject>section hr{height:0;padding-top:.25em}div#p>svg>foreignObject>section pre{border:1px solid #999;line-height:1.15;overflow:visible}div#p>svg>foreignObject>section pre code svg[data-marp-fitting=svg]{max-height:529px}div#p>svg>foreignObject>section footer,div#p>svg>foreignObject>section header{color:hsla(0,0%,40%,.75);font-size:18px;left:30px;margin:0;position:absolute}div#p>svg>foreignObject>section header{top:21px}div#p>svg>foreignObject>section footer{bottom:21px}div#p>svg>foreignObject>section{align-items:stretch;background:#fff;display:flex;flex-flow:column nowrap;font-size:29px;height:720px;justify-content:center;padding:78.5px;width:1280px}div#p>svg>foreignObject>section{--marpit-root-font-size:29px}div#p>svg>foreignObject>section>:last-child,div#p>svg>foreignObject>section[data-footer]>:nth-last-child(2){margin-bottom:0}div#p>svg>foreignObject>section>:first-child,div#p>svg>foreignObject>section>header:first-child+*{margin-top:0}div#p>svg>foreignObject>section:after{bottom:21px;color:#777;font-size:24px;padding:0;position:absolute;right:30px}div#p>svg>foreignObject>section:after{--marpit-root-font-size:24px}div#p>svg>foreignObject>section.invert{background-color:#222;color:#e6eaf0}div#p>svg>foreignObject>section.invert:after{color:#999}div#p>svg>foreignObject>section.invert img{background-color:transparent}div#p>svg>foreignObject>section.invert a{color:#50b3ff}div#p>svg>foreignObject>section.invert h1{color:#a3c5e7}div#p>svg>foreignObject>section.invert h2,div#p>svg>foreignObject>section.invert h3,div#p>svg>foreignObject>section.invert h4,div#p>svg>foreignObject>section.invert h5{color:#ebeff5}div#p>svg>foreignObject>section.invert blockquote,div#p>svg>foreignObject>section.invert h6{border-color:#3d3f43;color:#939699}div#p>svg>foreignObject>section.invert h1 strong,div#p>svg>foreignObject>section.invert h2 strong,div#p>svg>foreignObject>section.invert h3 strong,div#p>svg>foreignObject>section.invert h4 strong,div#p>svg>foreignObject>section.invert h5 strong,div#p>svg>foreignObject>section.invert h6 strong{color:#7bf}div#p>svg>foreignObject>section.invert hr{background-color:#3d3f43}div#p>svg>foreignObject>section.invert footer,div#p>svg>foreignObject>section.invert header{color:hsla(0,0%,60%,.75)}div#p>svg>foreignObject>section.invert code,div#p>svg>foreignObject>section.invert kbd{background-color:#111}div#p>svg>foreignObject>section.invert kbd{border-color:#666;box-shadow:inset 0 -1px 0 #555;color:#e6eaf0}div#p>svg>foreignObject>section.invert table tr{background-color:#12181d;border-color:#60657b}div#p>svg>foreignObject>section.invert table tr:nth-child(2n){background-color:#1b2024}div#p>svg>foreignObject>section.invert table td,div#p>svg>foreignObject>section.invert table th{border-color:#5b5e61}div#p>svg>foreignObject>section.invert pre{background-color:#0a0e12;border-color:#777}div#p>svg>foreignObject>section.invert pre code{background-color:transparent}div#p>svg>foreignObject>section[data-color] h1,div#p>svg>foreignObject>section[data-color] h2,div#p>svg>foreignObject>section[data-color] h3,div#p>svg>foreignObject>section[data-color] h4,div#p>svg>foreignObject>section[data-color] h5,div#p>svg>foreignObject>section[data-color] h6{color:currentColor}div#p>svg>foreignObject>section[data-marpit-scope-WWwjFT7t]{text-align:center}div#p>svg>foreignObject>section[data-marpit-scope-etm9ByLt]{text-align:center}div#p>svg>foreignObject>section[data-marpit-scope-VHto5ikq]{text-align:center}div#p>svg>foreignObject>section[data-marpit-scope-VHto5ikq] img{width:100%}div#p>svg>foreignObject>section[data-marpit-scope-tj8liXZl] p{text-align:center}div#p>svg>foreignObject>section[data-marpit-scope-tj8liXZl] p>img{width:50%}div#p>svg>foreignObject>section[data-marpit-scope-tUtqOIPw] img{width:70%}div#p>svg>foreignObject>section[data-marpit-scope-tUtqOIPw] p{text-align:center}div#p>svg>foreignObject>section[data-marpit-scope-Hz1ySziG]{padding:0}div#p>svg>foreignObject>section[data-marpit-scope-Hz1ySziG] iframe{height:100%}div#p>svg>foreignObject>section[data-marpit-scope-ASlRfsLR] ul{font-size:.9em}div#p>svg>foreignObject>section[data-marpit-scope-7qsde3M5] ul{font-size:0.9em}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-progress-parent"><div class="bespoke-progress-bar"></div></div><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-marpit-scope-WWwjFT7t="" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> Docker for development<br /><img class="emoji" draggable="false" alt="🐳" src="https://twemoji.maxcdn.com/2/svg/1f433.svg" data-marp-twemoji=""/> <img class="emoji" draggable="false" alt="🔌" src="https://twemoji.maxcdn.com/2/svg/1f50c.svg" data-marp-twemoji=""/> <img class="emoji" draggable="false" alt="🧑‍💻" src="https://twemoji.maxcdn.com/2/svg/1f9d1-200d-1f4bb.svg" data-marp-twemoji=""/></span></foreignObject></svg></h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./assets/y-tho.jpg&quot;);"></figure></div></section></foreignObject><foreignObject width="67%" height="720" x="33%"><section id="2" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:33%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left"><section style="overflow-y: scroll">
+    <img src="./assets/build-guide.jpg" alt="build-guide" width="100%" />
+</section>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-marpit-scope-etm9ByLt="" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;"><script id="asciicast-S9s0ABJSdsP8uLjgcuAPQiStk" src="https://asciinema.org/a/S9s0ABJSdsP8uLjgcuAPQiStk.js" data-size="big" async></script>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1>Lies!</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>joshua@diplodocus:~$ <span class="hljs-built_in">which</span> node
+/home/joshua/.nvm/versions/node/v16.13.0/bin/node
+
+joshua@diplodocus:~$ ldd /home/joshua/.nvm/versions/node/v16.13.0/bin/node
+        linux-vdso.so.1 (0x00007ffc5b77a000)
+        libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fc070dc8000)
+        libstdc++.so.6 =&gt; /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fc070be7000)
+        libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007fc070a98000)
+        libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fc070a7d000)
+        libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fc070a5a000)
+        libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc070868000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fc070de1000)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-marpit-scope-VHto5ikq="" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<p><img src="./assets/libc.png" alt="libc" /></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1>Winblows?</h1>
+<pre><code class="language-powershell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>C:\Users\Joshua&gt;dumpbin /nologo /dependents <span class="hljs-string">&quot;C:\Program Files\nodejs\node.exe&quot;</span>
+
+Dump of file C:\Program Files\nodejs\node.exe
+
+File <span class="hljs-built_in">Type</span>: EXECUTABLE IMAGE
+
+  Image has the following dependencies:
+
+    dbghelp.dll
+    WS2_32.dll
+    IPHLPAPI.DLL
+    PSAPI.DLL
+    USERENV.dll
+    ADVAPI32.dll
+    USER32.dll
+    CRYPT32.dll
+    bcrypt.dll
+    KERNEL32.dll
+    WINMM.dll
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-fragments="10" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:41%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./assets/it-works-on-my-machine.jpg&quot;);"></figure></div></section></foreignObject><foreignObject width="59%" height="720" x="41%"><section id="7" data-marpit-fragments="10" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:41%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+<h1>The promise of Docker</h1>
+<ul>
+<li data-marpit-fragment="1">Consistent <em><strong>runtime</strong></em> environment</li>
+<li data-marpit-fragment="2">Tools for developers
+<ul>
+<li data-marpit-fragment="3">Docker Desktop</li>
+</ul>
+</li>
+<li data-marpit-fragment="4">Interoperable format (Docker Image)</li>
+<li data-marpit-fragment="5">Self documenting (<code>Dockerfile</code>)</li>
+<li data-marpit-fragment="6">Easy* to use APIs (CLI, HTTP API)</li>
+<li data-marpit-fragment="7">Widely adopted
+<ul>
+<li data-marpit-fragment="8">Kubernetes</li>
+<li data-marpit-fragment="9">GitHub Actions</li>
+<li data-marpit-fragment="10">EKS, AKS, GKE</li>
+</ul>
+</li>
+</ul>
+<footer>
+* Your mileage may vary
+</footer>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🌠" src="https://twemoji.maxcdn.com/2/svg/1f320.svg" data-marp-twemoji=""/> Humble beginnings</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ node --version <span class="hljs-comment"># Node.js running on my host</span>
+v16.13.0
+
+$ docker run --rm node --version <span class="hljs-comment"># Node.js running in a container</span>
+v17.1.0
+
+$ docker run --rm node:latest --version <span class="hljs-comment"># &lt;image&gt;:&lt;tag&gt; the default tag is &#x27;latest&#x27;</span>
+v17.1.0
+
+$ docker run --rm node:16.13.0 --version <span class="hljs-comment"># Specific Node.js running inside a container</span>
+v16.13.0
+
+$ docker run --rm node <span class="hljs-built_in">which</span> node <span class="hljs-comment"># Location of Node.js binary inside the container</span>
+/usr/<span class="hljs-built_in">local</span>/bin/node
+
+$ docker run --rm node ldd /usr/<span class="hljs-built_in">local</span>/bin/node <span class="hljs-comment"># Dependencies of Node.js inside the container</span>
+        linux-vdso.so.1 (0x00007ffe80b9c000)
+        libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f32df703000)
+        libstdc++.so.6 =&gt; /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f32df536000)
+        libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f32df3f2000)
+        libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f32df3d8000)
+        libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f32df3b6000)
+        libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f32df1f1000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f32df713000
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🚀" src="https://twemoji.maxcdn.com/2/svg/1f680.svg" data-marp-twemoji=""/> Blast off!</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ docker run \    <span class="hljs-comment"># Run a command in a new container</span>
+--rm \            <span class="hljs-comment"># Automatically remove the container when it exits</span>
+--interactive \   <span class="hljs-comment"># Keep STDIN open even if not attached *</span>
+--tty \           <span class="hljs-comment"># Allocate a pseudo-TTY *</span>
+--workdir ~ \     <span class="hljs-comment"># Working directory inside the container</span>
+--name dev \      <span class="hljs-comment"># Assign a name to the container</span>
+node \            <span class="hljs-comment"># Official Node Docker Image</span>
+bash              <span class="hljs-comment"># Command</span>
+
+<span class="hljs-comment"># Weird no files? <img class="emoji" draggable="false" alt="😕" src="https://twemoji.maxcdn.com/2/svg/1f615.svg" data-marp-twemoji=""/></span>
+root@f6513673f9f6:/home/joshua<span class="hljs-comment"># ls -lah</span>
+total 8.0K
+drwxr-xr-x 2 root root 4.0K Nov 25 18:10 .
+drwxr-xr-x 1 root root 4.0K Nov 25 18:10 ..
+
+<span class="hljs-comment"># No vim either...</span>
+root@f6513673f9f6:/home/joshua<span class="hljs-comment"># vim</span>
+bash: vim: <span class="hljs-built_in">command</span> not found
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="💪" src="https://twemoji.maxcdn.com/2/svg/1f4aa.svg" data-marp-twemoji=""/> Power through</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>root@f6513673f9f6:/home/joshua<span class="hljs-comment"># mkdir todo</span>
+root@f6513673f9f6:/home/joshua<span class="hljs-comment"># cd todo/</span>
+
+<span class="hljs-comment"># Initialize a Node.js module</span>
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># yarn init --yes</span>
+
+<span class="hljs-comment"># Write some code</span>
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># echo &quot;console.log(&#x27;Hello World! <img class="emoji" draggable="false" alt="🥳" src="https://twemoji.maxcdn.com/2/svg/1f973.svg" data-marp-twemoji=""/>&#x27;);&quot; &gt; index.js</span>
+
+<span class="hljs-comment"># Write some MORE code!</span>
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># echo &quot;console.log(&#x27;Look mum no vim! <img class="emoji" draggable="false" alt="😯" src="https://twemoji.maxcdn.com/2/svg/1f62f.svg" data-marp-twemoji=""/>&#x27;);&quot; &gt;&gt; index.js</span>
+
+<span class="hljs-comment"># Run the program</span>
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># node .</span>
+Hello World! <img class="emoji" draggable="false" alt="🥳" src="https://twemoji.maxcdn.com/2/svg/1f973.svg" data-marp-twemoji=""/>
+Look mum no vim! <img class="emoji" draggable="false" alt="😯" src="https://twemoji.maxcdn.com/2/svg/1f62f.svg" data-marp-twemoji=""/>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-marpit-scope-tj8liXZl="" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🏡" src="https://twemoji.maxcdn.com/2/svg/1f3e1.svg" data-marp-twemoji=""/> Feels like home?</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># echo is great but and the very least give me vim</span>
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># apt update</span>
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># apt install vim</span>
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># vim index.js</span>
+</span></span></foreignObject></svg></code></pre>
+<p><img src="./assets/vim.jpg" alt="vim" /></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-marpit-scope-tUtqOIPw="" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<p><img src="./assets/i-prefer-a-real-ide.jpg" alt="real-ide" /></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="😖" src="https://twemoji.maxcdn.com/2/svg/1f616.svg" data-marp-twemoji=""/> Happy now?</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment">#</span>
+
+<span class="hljs-comment"># Ctrl-p, Ctrl-q =&gt; Detach from container</span>
+
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+f6513673f9f6   node      <span class="hljs-string">&quot;docker-entrypoint.s…&quot;</span>   13 minutes ago   Up 13 minutes             dev
+
+<span class="hljs-comment"># Copying files out of the container</span>
+$ docker cp dev:/home/joshua/todo .
+
+$ tree
+.
+└── todo
+    ├── index.js
+    └── package.json
+
+1 directory, 2 files
+
+<span class="hljs-comment"># The real work begins! (launches Visual Studio Code)</span>
+$ code todo
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="⏳" src="https://twemoji.maxcdn.com/2/svg/23f3.svg" data-marp-twemoji=""/> A few moments layer...</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ tree .
+.
+└── todo
+    ├── package.json
+    └── src
+        └── main.js
+
+2 directories, 2 files
+
+$ cat todo/src/main.js
+console.log(<span class="hljs-string">&#x27;I hate index.js files <img class="emoji" draggable="false" alt="😡" src="https://twemoji.maxcdn.com/2/svg/1f621.svg" data-marp-twemoji=""/>&#x27;</span>);
+
+$ cat todo/package.json
+{
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;todo&quot;</span>,
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.0.0&quot;</span>,
+  <span class="hljs-string">&quot;main&quot;</span>: <span class="hljs-string">&quot;src/main.js&quot;</span>,
+  <span class="hljs-string">&quot;license&quot;</span>: <span class="hljs-string">&quot;MIT&quot;</span>,
+  <span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;node .&quot;</span>
+  }
+}
+
+<span class="hljs-comment"># Copying files to the container</span>
+$ docker cp ./todo dev:/home/joshua
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="👋" src="https://twemoji.maxcdn.com/2/svg/1f44b.svg" data-marp-twemoji=""/> See you on the other side</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ docker attach dev
+
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># ls -lah</span>
+total 20K
+drwxr-xr-x 3 node node 4.0K Nov 25 19:09 .
+drwxr-xr-x 3 root root 4.0K Nov 25 18:31 ..
+-rw-r--r-- 1 node node  106 Nov 25 18:50 index.js <span class="hljs-comment"># <img class="emoji" draggable="false" alt="😢" src="https://twemoji.maxcdn.com/2/svg/1f622.svg" data-marp-twemoji=""/> Why are you still here?</span>
+-rw-r--r-- 1 node node   96 Nov 25 19:06 package.json
+drwxr-xr-x 2 node node 4.0K Nov 25 19:07 src
+
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># rm index.js</span>
+
+root@f6513673f9f6:/home/joshua/todo<span class="hljs-comment"># node .</span>
+I hate index.js files <img class="emoji" draggable="false" alt="😡" src="https://twemoji.maxcdn.com/2/svg/1f621.svg" data-marp-twemoji=""/>
+
+<span class="hljs-comment"># I don&#x27;t want to maintain and sync two copies of my code</span>
+<span class="hljs-comment"># There must be a better way...</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="⛑️" src="https://twemoji.maxcdn.com/2/svg/26d1.svg" data-marp-twemoji=""/> Bind mount to the rescue!</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ <span class="hljs-built_in">pwd</span>
+/home/joshua/projects/joshua-barnett/docker-for-development/todo
+
+$ docker run --rm --interactive --tty --workdir /srv/todo --name dev \
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="⭐" src="https://twemoji.maxcdn.com/2/svg/2b50.svg" data-marp-twemoji=""/> New mount argument</span>
+--mount <span class="hljs-built_in">type</span>=<span class="hljs-built_in">bind</span>,<span class="hljs-built_in">source</span>=`<span class="hljs-built_in">pwd</span>`,target=/srv/todo \
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📝" src="https://twemoji.maxcdn.com/2/svg/1f4dd.svg" data-marp-twemoji=""/> Less verbose</span>
+<span class="hljs-comment"># --volume `pwd`:/srv/todo</span>
+node \
+bash
+
+root@c9d70c16b644:/srv/todo<span class="hljs-comment"># ls</span>
+package.json  src
+</span></span></foreignObject></svg></code></pre>
+<ul>
+<li>Only difference between them is <code>--mount</code> will throw an error if the host directory does not exist.</li>
+<li>Whereas <code>--volume</code> will stub a missing host directory for you.</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="😈" src="https://twemoji.maxcdn.com/2/svg/1f608.svg" data-marp-twemoji=""/> The devil is in the implementation</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="🍏" src="https://twemoji.maxcdn.com/2/svg/1f34f.svg" data-marp-twemoji=""/> Outside the container + inside bind mount (Fast! <img class="emoji" draggable="false" alt="🐇" src="https://twemoji.maxcdn.com/2/svg/1f407.svg" data-marp-twemoji=""/>)</span>
+$ wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[=&gt;          ] 157.30M  44.7MB/s    eta 64s
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="🍏" src="https://twemoji.maxcdn.com/2/svg/1f34f.svg" data-marp-twemoji=""/> Inside the container + inside bind mount (Slow! <img class="emoji" draggable="false" alt="🐌" src="https://twemoji.maxcdn.com/2/svg/1f40c.svg" data-marp-twemoji=""/>)</span>
+root@c9d70c16b644:/srv/todo<span class="hljs-comment"># wget -q --show-progress \</span>
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[=&gt;          ] 150.88M  5.11MB/s    eta 9m 12s
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="🍏" src="https://twemoji.maxcdn.com/2/svg/1f34f.svg" data-marp-twemoji=""/> Inside the container + outside bind mount (Fast-ish! <img class="emoji" draggable="false" alt="🐇" src="https://twemoji.maxcdn.com/2/svg/1f407.svg" data-marp-twemoji=""/>)</span>
+root@c9d70c16b644:/tmp<span class="hljs-comment"># wget -q --show-progress \</span>
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[&gt;           ] 161.04M  40.6MB/s    eta 69s
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🌱" src="https://twemoji.maxcdn.com/2/svg/1f331.svg" data-marp-twemoji=""/> Grass is greener?</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="🐧" src="https://twemoji.maxcdn.com/2/svg/1f427.svg" data-marp-twemoji=""/> Outside the container + inside bind mount (Fast! <img class="emoji" draggable="false" alt="🐇" src="https://twemoji.maxcdn.com/2/svg/1f407.svg" data-marp-twemoji=""/>)</span>
+$ wget -q --show-progress \
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[=&gt;          ] 159.04M  45.1MB/s    eta 63s
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="🐧" src="https://twemoji.maxcdn.com/2/svg/1f427.svg" data-marp-twemoji=""/> Inside the container + inside bind mount (Fast! <img class="emoji" draggable="false" alt="🐇" src="https://twemoji.maxcdn.com/2/svg/1f407.svg" data-marp-twemoji=""/>)</span>
+root@9e3d5e4532e2:/srv/todo<span class="hljs-comment"># wget -q --show-progress \</span>
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[=&gt;          ] 160.96M  43.0MB/s    eta 67s
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="🐧" src="https://twemoji.maxcdn.com/2/svg/1f427.svg" data-marp-twemoji=""/> Inside the container + outside bind mount (Fast! <img class="emoji" draggable="false" alt="🐇" src="https://twemoji.maxcdn.com/2/svg/1f407.svg" data-marp-twemoji=""/>)</span>
+root@9e3d5e4532e2:/tmp<span class="hljs-comment"># wget -q --show-progress \</span>
+https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso
+ubuntu-20.04.3-desktop   5%[=&gt;          ] 160.21M  45.4MB/s    eta 63s
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-Hz1ySziG="" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./assets/magic.gif&quot;);"></figure></div></section></foreignObject><foreignObject width="60%" height="720"><section id="19" data-marpit-scope-Hz1ySziG="" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right"><iframe src="https://www.docker.com/blog/deep-dive-into-new-docker-desktop-filesharing-implementation/" alt="Deep Dive Into the New Docker Desktop filesharing Implementation Using FUSE"></iframe>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🕳️" src="https://twemoji.maxcdn.com/2/svg/1f573.svg" data-marp-twemoji=""/> It gets worse!</h1>
+<pre><code class="language-shell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">#</span><span class="bash"> <img class="emoji" draggable="false" alt="🍏" src="https://twemoji.maxcdn.com/2/svg/1f34f.svg" data-marp-twemoji=""/> Outside the container + inside <span class="hljs-built_in">bind</span> mount (Fast! <img class="emoji" draggable="false" alt="🐇" src="https://twemoji.maxcdn.com/2/svg/1f407.svg" data-marp-twemoji=""/>)</span>
+<span class="hljs-meta">$</span><span class="bash"> time yarn install --frozen-lockfile</span> 
+<span class="hljs-meta">#</span><span class="bash"> -- snip ---</span>
+<img class="emoji" draggable="false" alt="✨" src="https://twemoji.maxcdn.com/2/svg/2728.svg" data-marp-twemoji=""/>  Done in 50.21s.
+4.85s user
+23.67s system
+<span class="hljs-meta">96%</span><span class="bash"> cpu</span>
+50.398 total
+<span class="hljs-meta">
+#</span><span class="bash"> <img class="emoji" draggable="false" alt="🍏" src="https://twemoji.maxcdn.com/2/svg/1f34f.svg" data-marp-twemoji=""/> Inside the container + inside <span class="hljs-built_in">bind</span> mount (8x Slower! <img class="emoji" draggable="false" alt="🐌" src="https://twemoji.maxcdn.com/2/svg/1f40c.svg" data-marp-twemoji=""/>)</span>
+root@6001c575a574:/srv/awesome-todo# time yarn install --frozen-lockfile
+<span class="hljs-meta">#</span><span class="bash"> -- snip --</span>
+Done in 402.74s.
+
+real    6m43.053s
+user    1m15.429s
+sys     1m10.757s
+<span class="hljs-meta">
+#</span><span class="bash"> Size on disk</span>
+root@6001c575a574:/srv/awesome-todo# du -sh node_modules packages/*/node_modules
+370M    node_modules
+0       packages/client/node_modules
+0       packages/server/node_modules
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-scope-ASlRfsLR="" data-marpit-fragments="14" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🤔" src="https://twemoji.maxcdn.com/2/svg/1f914.svg" data-marp-twemoji=""/> How to handle <code>node_modules</code>?</h1>
+<ul>
+<li data-marpit-fragment="1">Use <img class="emoji" draggable="false" alt="🐧" src="https://twemoji.maxcdn.com/2/svg/1f427.svg" data-marp-twemoji=""/> Linux (VM etc.) for development
+<ul>
+<li data-marpit-fragment="2">Not very inclusive <img class="emoji" draggable="false" alt="🤨" src="https://twemoji.maxcdn.com/2/svg/1f928.svg" data-marp-twemoji=""/></li>
+</ul>
+</li>
+<li data-marpit-fragment="3">Install <code>node_modules</code> outside of the bind mount directory
+<ul>
+<li data-marpit-fragment="4"><img class="emoji" draggable="false" alt="❌" src="https://twemoji.maxcdn.com/2/svg/274c.svg" data-marp-twemoji=""/> Makes <code>node_modules</code> inaccessible from the host
+<ul>
+<li data-marpit-fragment="5"><img class="emoji" draggable="false" alt="✅" src="https://twemoji.maxcdn.com/2/svg/2705.svg" data-marp-twemoji=""/> But they are visible through debuggers</li>
+</ul>
+</li>
+<li data-marpit-fragment="6">Parent directory inside the container
+<ul>
+<li data-marpit-fragment="7"><code>yarn install --frozen-lockfile --modules-folder ../node_modules</code></li>
+<li data-marpit-fragment="8"><img class="emoji" draggable="false" alt="❌" src="https://twemoji.maxcdn.com/2/svg/274c.svg" data-marp-twemoji=""/> Doesn't work if dependencies expecting to be in the project root (hardcoded)</li>
+</ul>
+</li>
+<li data-marpit-fragment="9">Symlink to path outside of project directory
+<ul>
+<li data-marpit-fragment="10"><code>node_modules -&gt; /tmp/node_modules</code></li>
+<li data-marpit-fragment="11"><img class="emoji" draggable="false" alt="⚠️" src="https://twemoji.maxcdn.com/2/svg/26a0.svg" data-marp-twemoji=""/> May still not work in some cases</li>
+</ul>
+</li>
+<li data-marpit-fragment="12">Use a persistent Docker volume
+<ul>
+<li data-marpit-fragment="13">If you want to use cached <code>node_modules</code> from an existing Docker image</li>
+<li data-marpit-fragment="14"><img class="emoji" draggable="false" alt="⚠️" src="https://twemoji.maxcdn.com/2/svg/26a0.svg" data-marp-twemoji=""/> Managing the volume becomes complicated</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-fragments="10" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="📚" src="https://twemoji.maxcdn.com/2/svg/1f4da.svg" data-marp-twemoji=""/> Docker volumes</h1>
+<ul>
+<li data-marpit-fragment="1"><img class="emoji" draggable="false" alt="✅" src="https://twemoji.maxcdn.com/2/svg/2705.svg" data-marp-twemoji=""/> No speed penalty like <em><strong>bind mounts</strong></em></li>
+<li data-marpit-fragment="2"><img class="emoji" draggable="false" alt="✅" src="https://twemoji.maxcdn.com/2/svg/2705.svg" data-marp-twemoji=""/> Use cases
+<ul>
+<li data-marpit-fragment="3">Backing up, restoring, migrating data</li>
+<li data-marpit-fragment="4">Intermediate file storage</li>
+<li data-marpit-fragment="5">Native file system behaviour</li>
+<li data-marpit-fragment="6">High performance I/O
+<ul>
+<li data-marpit-fragment="7">e.g. Database directories</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-marpit-fragment="8"><img class="emoji" draggable="false" alt="⚠️" src="https://twemoji.maxcdn.com/2/svg/26a0.svg" data-marp-twemoji=""/> Data not easily accessible from host
+<ul>
+<li data-marpit-fragment="9"><code>docker cp</code> if necessary</li>
+</ul>
+</li>
+<li data-marpit-fragment="10"><img class="emoji" draggable="false" alt="📄" src="https://twemoji.maxcdn.com/2/svg/1f4c4.svg" data-marp-twemoji=""/> <a href="https://docs.docker.com/storage/">Manage data in Docker</a></li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="📖" src="https://twemoji.maxcdn.com/2/svg/1f4d6.svg" data-marp-twemoji=""/> Example use of a Docker volume</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># Start a MongoDB container running in the background</span>
+$ docker run \
+--rm \     <span class="hljs-comment"># Automatically remove the container when it exits</span>
+--detach \ <span class="hljs-comment"># Run container in background and print container ID</span>
+--volume my_db_data_volume:/data/db \
+<span class="hljs-comment"># Create a named volume called &#x27;my_db_data_volume&#x27;</span>
+<span class="hljs-comment"># Mount the named volume to the path &#x27;/data/db&#x27; in the container</span>
+--name my_db \ <span class="hljs-comment"># Assign a name to the container</span>
+mongo <span class="hljs-comment"># Use the latest official MongoDB image</span>
+
+<span class="hljs-comment"># Show running containers</span>
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS       NAMES
+a277c6f52683   mongo     <span class="hljs-string">&quot;docker-entrypoint.s…&quot;</span>   3 minutes ago    Up 3 minutes    27017/tcp   my_db
+
+<span class="hljs-comment"># Execute a mongo shell (alongside the already running mongod)</span>
+$ docker <span class="hljs-built_in">exec</span> --interactive --tty my_db mongo
+
+&gt; use todo
+switched to db todo
+
+&gt; db.items.insert({<span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;Task&quot;</span>, <span class="hljs-string">&quot;done&quot;</span>: <span class="hljs-literal">false</span>})
+WriteResult({ <span class="hljs-string">&quot;nInserted&quot;</span> : 1 })
+
+&gt; <span class="hljs-built_in">exit</span>
+
+$ docker rm --force my_db
+my_db
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./assets/compass.jpg&quot;);"></figure></div></section></foreignObject><foreignObject width="60%" height="720"><section id="24" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:40%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># No containers running at the moment</span>
+$ docker ps --all
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+<span class="hljs-comment"># But our MongoDB data volume still exists</span>
+$ docker volume ls
+DRIVER    VOLUME NAME
+<span class="hljs-built_in">local</span>     my_db_data_volume
+
+<span class="hljs-comment"># Start the container again with the same arguments</span>
+$ docker run \
+--rm \
+--detach \
+--volume my_db_data_volume:/data/db \
+--name my_db \
+<span class="hljs-comment"># This time lets also publish the MongoDB port to our host</span>
+--publish 27017:27017 \
+mongo
+
+<span class="hljs-comment"># Query MongoDB via the shell for existing items</span>
+$ docker <span class="hljs-built_in">exec</span> my_db \
+mongo todo --quiet --<span class="hljs-built_in">eval</span> <span class="hljs-string">&#x27;db.items.find().forEach(printjson)&#x27;</span>
+{
+        <span class="hljs-string">&quot;_id&quot;</span> : ObjectId(<span class="hljs-string">&quot;61a27159b08ff2c5624a9bba&quot;</span>),
+        <span class="hljs-string">&quot;description&quot;</span> : <span class="hljs-string">&quot;Task&quot;</span>,
+        <span class="hljs-string">&quot;done&quot;</span> : <span class="hljs-literal">false</span>
+}
+
+<span class="hljs-comment"># Can also use a GUI on our host <img class="emoji" draggable="false" alt="👉" src="https://twemoji.maxcdn.com/2/svg/1f449.svg" data-marp-twemoji=""/></span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🕸️" src="https://twemoji.maxcdn.com/2/svg/1f578.svg" data-marp-twemoji=""/> Docker networks</h1>
+<ul>
+<li>
+<p>Every container is assigned to the default <code>bridge</code> network.</p>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+f56f0ebff9c0   bridge    bridge    <span class="hljs-built_in">local</span>
+3aaf4000c115   host      host      <span class="hljs-built_in">local</span>
+861adb658ac5   none      null      <span class="hljs-built_in">local</span>
+</span></span></foreignObject></svg></code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<pre><code class="language-json"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ docker inspect my_db | jq &#x27;.[].NetworkSettings.Networks&#x27;
+{
+    <span class="hljs-attr">&quot;bridge&quot;</span>: {
+        <span class="hljs-attr">&quot;IPAMConfig&quot;</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">&quot;Links&quot;</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">&quot;Aliases&quot;</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">&quot;NetworkID&quot;</span>: <span class="hljs-string">&quot;f56f0ebff9c02f8c81a2cb4983740d70eae5f79968c49f282d3641a9fdea353e&quot;</span>,
+        <span class="hljs-attr">&quot;EndpointID&quot;</span>: <span class="hljs-string">&quot;4111d8d341b634e8851d5a37fe06773e37930e7d5dcd9d5ab1f075803f0e6838&quot;</span>,
+        <span class="hljs-attr">&quot;Gateway&quot;</span>: <span class="hljs-string">&quot;172.17.0.1&quot;</span>,
+        <span class="hljs-attr">&quot;IPAddress&quot;</span>: <span class="hljs-string">&quot;172.17.0.2&quot;</span>,
+        <span class="hljs-attr">&quot;IPPrefixLen&quot;</span>: <span class="hljs-number">16</span>,
+        <span class="hljs-attr">&quot;IPv6Gateway&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+        <span class="hljs-attr">&quot;GlobalIPv6Address&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+        <span class="hljs-attr">&quot;GlobalIPv6PrefixLen&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">&quot;MacAddress&quot;</span>: <span class="hljs-string">&quot;02:42:ac:11:00:02&quot;</span>,
+        <span class="hljs-attr">&quot;DriverOpts&quot;</span>: <span class="hljs-literal">null</span>
+    }
+}
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="👎" src="https://twemoji.maxcdn.com/2/svg/1f44e.svg" data-marp-twemoji=""/> Don't do this at home</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># Creating a new &#x27;client&#x27; container that will connect to &#x27;my_db&#x27; through bridge</span>
+$ docker run --rm --name my_client --interactive --tty mongo bash
+
+<span class="hljs-comment"># Can&#x27;t connect to &#x27;my_db&#x27; container through &#x27;localhost&#x27;.</span>
+root@63dcb850b14f:/<span class="hljs-comment"># mongo todo --quiet --eval &#x27;db.items.find().forEach(printjson)&#x27;</span>
+Error: could not connect to server 127.0.0.1:27017, connection attempt failed: SocketException:
+Error connecting to 127.0.0.1:27017 :: caused by :: Connection refused :
+connect@src/mongo/shell/mongo.js:372:17
+@(connect):3:6
+exception: connect failed
+exiting with code 1
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="❌" src="https://twemoji.maxcdn.com/2/svg/274c.svg" data-marp-twemoji=""/> Requires hardcoded IP address</span>
+root@63dcb850b14f:/<span class="hljs-comment"># mongo mongodb://172.17.0.2:27017/todo --quiet --eval &#x27;db.items.find().forEach(printjson)&#x27;</span>
+{
+        <span class="hljs-string">&quot;_id&quot;</span> : ObjectId(<span class="hljs-string">&quot;61a2763c923c19ee6b178a5a&quot;</span>),
+        <span class="hljs-string">&quot;description&quot;</span> : <span class="hljs-string">&quot;Task&quot;</span>,
+        <span class="hljs-string">&quot;done&quot;</span> : <span class="hljs-literal">false</span>
+}
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-marpit-fragments="4" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="👍" src="https://twemoji.maxcdn.com/2/svg/1f44d.svg" data-marp-twemoji=""/> Recommended way</h1>
+<ul>
+<li data-marpit-fragment="1">Use <code>--network &lt;name&gt;</code> to create a user defined bridge network.</li>
+<li data-marpit-fragment="2">User-defined bridges provide automatic DNS resolution between containers.</li>
+<li data-marpit-fragment="3">User-defined bridges provide better isolation.</li>
+<li data-marpit-fragment="4">Containers can be attached and detached from user-defined networks on the fly.</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🌉" src="https://twemoji.maxcdn.com/2/svg/1f309.svg" data-marp-twemoji=""/> Building bridges</h1>
+<pre><code class="language-shell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-meta">#</span><span class="bash"> Create a user defined bridge network</span>
+<span class="hljs-meta">$</span><span class="bash"> docker network create my_network</span>
+ec58fc0d1375c280e609adc5086fd67697f55a8a3bfbde69eaaff65d9035a1ad
+<span class="hljs-meta">
+$</span><span class="bash"> docker network ls</span>
+docker network ls
+NETWORK ID     NAME         DRIVER    SCOPE
+f56f0ebff9c0   bridge       bridge    local
+3aaf4000c115   host         host      local
+ec58fc0d1375   my_network   bridge    local <img class="emoji" draggable="false" alt="😊" src="https://twemoji.maxcdn.com/2/svg/1f60a.svg" data-marp-twemoji=""/>
+861adb658ac5   none         null      local
+<span class="hljs-meta">
+#</span><span class="bash"> Recreate database container with <span class="hljs-string">&#x27;--network&#x27;</span></span>
+docker run --rm --detach --volume my_db_data_volume:/data/db --name my_db --publish 27017:27017 \
+--network my_network \ # <img class="emoji" draggable="false" alt="⭐" src="https://twemoji.maxcdn.com/2/svg/2b50.svg" data-marp-twemoji=""/> New
+mongo
+<span class="hljs-meta">
+#</span><span class="bash"> Recreate client container with <span class="hljs-string">&#x27;--network&#x27;</span></span>
+docker run --rm --name my_client --interactive --tty \
+--network my_network \ # <img class="emoji" draggable="false" alt="⭐" src="https://twemoji.maxcdn.com/2/svg/2b50.svg" data-marp-twemoji=""/> New
+mongo \
+bash
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="😌" src="https://twemoji.maxcdn.com/2/svg/1f60c.svg" data-marp-twemoji=""/> Much better</h1>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap># Install dig for DNS querying
+root@924e075a1b8c:/# apt update &amp;&amp; apt install --yes dnsutils
+
+# Query database container name 'my_db'
+root@924e075a1b8c:/# dig +short my_db
+172.19.0.2
+
+# <img class="emoji" draggable="false" alt="✅" src="https://twemoji.maxcdn.com/2/svg/2705.svg" data-marp-twemoji=""/> Connecting to database using hostname
+root@63dcb850b14f:/# mongo mongodb://my_db:27017/todo --quiet --eval 'db.items.find().forEach(printjson)'
+{
+        &quot;_id&quot; : ObjectId(&quot;61a2763c923c19ee6b178a5a&quot;),
+        &quot;description&quot; : &quot;Task&quot;,
+        &quot;done&quot; : false
+}
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-marpit-scope-7qsde3M5="" data-marpit-fragments="11" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🏖️" src="https://twemoji.maxcdn.com/2/svg/1f3d6.svg" data-marp-twemoji=""/> Example project <code>awesome-todo</code></h1>
+<ul>
+<li data-marpit-fragment="1">
+<p>Database</p>
+<ul>
+<li data-marpit-fragment="2"><code>mongod</code> - NoSQL database</li>
+</ul>
+</li>
+<li data-marpit-fragment="3">
+<p>Backend application</p>
+<ul>
+<li data-marpit-fragment="4"><code>fastify</code> - Web framework</li>
+<li data-marpit-fragment="5"><code>mongoose</code> - Data models</li>
+<li data-marpit-fragment="6"><code>graphql</code> - API Schema</li>
+<li data-marpit-fragment="7"><code>mercurius</code> - GraphQL API</li>
+</ul>
+</li>
+<li data-marpit-fragment="8">
+<p>Frontend application</p>
+<ul>
+<li data-marpit-fragment="9"><code>create-react-app</code> - Frontend boilerplate</li>
+<li data-marpit-fragment="10"><code>styled-components</code> - Minor styling tweaks</li>
+<li data-marpit-fragment="11"><code>@apollo/client</code> - GraphQL client</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-fragments="11" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:49%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./assets/rtfm.jpg&quot;);"></figure></div></section></foreignObject><foreignObject width="51%" height="720"><section id="32" data-marpit-fragments="11" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;--marpit-advanced-background-split:49%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
+<h1><img class="emoji" draggable="false" alt="📄" src="https://twemoji.maxcdn.com/2/svg/1f4c4.svg" data-marp-twemoji=""/> RTFM</h1>
+<ul>
+<li data-marpit-fragment="1">Vague... <img class="emoji" draggable="false" alt="😩" src="https://twemoji.maxcdn.com/2/svg/1f629.svg" data-marp-twemoji=""/>
+<ul>
+<li data-marpit-fragment="2">Which version of Node.js?</li>
+<li data-marpit-fragment="3">Which version of Yarn?</li>
+<li data-marpit-fragment="4">Which version of MongoDB?</li>
+</ul>
+</li>
+<li data-marpit-fragment="5">Not very future proof <img class="emoji" draggable="false" alt="⚠️" src="https://twemoji.maxcdn.com/2/svg/26a0.svg" data-marp-twemoji=""/>
+<ul>
+<li data-marpit-fragment="6">Will these steps still work<br />
+5+ years from now?</li>
+</ul>
+</li>
+<li data-marpit-fragment="7">What if port <code>3001</code> is taken?
+<ul>
+<li data-marpit-fragment="8">How do I change it?</li>
+</ul>
+</li>
+<li data-marpit-fragment="9">Cross platform?
+<ul>
+<li data-marpit-fragment="10">...works on my machine <img class="emoji" draggable="false" alt="🤷" src="https://twemoji.maxcdn.com/2/svg/1f937.svg" data-marp-twemoji=""/></li>
+<li data-marpit-fragment="11"><img class="emoji" draggable="false" alt="😠" src="https://twemoji.maxcdn.com/2/svg/1f620.svg" data-marp-twemoji=""/></li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section class="invert" style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-marpit-fragments="1" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🔱" src="https://twemoji.maxcdn.com/2/svg/1f531.svg" data-marp-twemoji=""/> Dockerizing <code>awesome-todo</code></h1>
+
+<ul>
+<li data-marpit-fragment="1">
+<p>Starting our development container.</p>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ docker run \
+--interactive \
+--tty \
+<span class="hljs-comment"># Working directory</span>
+--workdir /srv/awesome-todo \
+<span class="hljs-comment"># Bind mount source into container</span>
+--volume `<span class="hljs-built_in">pwd</span>`:/srv/awesome-todo \
+<span class="hljs-comment"># Latest Node.js LTS (at the moment)</span>
+node:16.13.0 \
+bash
+</span></span></foreignObject></svg></code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🐧" src="https://twemoji.maxcdn.com/2/svg/1f427.svg" data-marp-twemoji=""/> Linux permissions (Gotcha)</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Default user?</span>
+root@6de80090a66a:/srv/awesome-todo<span class="hljs-comment"># whoami</span>
+root
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> GID and UID of root are &#x27;0&#x27;</span>
+root@6de80090a66a:/srv/awesome-todo<span class="hljs-comment"># cat /etc/passwd | grep root</span>
+root:x:0:0:root:/root:/bin/bash
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Creating a empty file</span>
+root@6de80090a66a:/srv/awesome-todo<span class="hljs-comment"># touch cant-touch-this</span>
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> File is owned by root inside container</span>
+root@6de80090a66a:/srv/awesome-todo<span class="hljs-comment"># ls -lah cant-touch-this</span>
+-rw-r--r-- 1 root root 0 Nov 28 18:43 cant-touch-this
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="🖥" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/> Permissions on host</span>
+$ ls -lh
+total 604K
+-rw-r--r-- 1 root   root      0 Nov 28 18:45 cant-touch-this
+-rw-r--r-- 1 joshua joshua  468 Nov 28 18:13 package.json
+drwxr-xr-x 5 joshua joshua 4.0K Nov 28 17:55 packages
+-rw-r--r-- 1 joshua joshua 1.3K Nov 27 16:44 README.md
+-rw-r--r-- 1 joshua joshua 589K Nov 28 18:23 yarn.lock
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="🖥" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/> GID and UID of root</span>
+$ cat /etc/passwd | grep root
+root:x:0:0:root:/root:/bin/bash
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="🖥" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/> GID and UID of my user</span>
+$ cat /etc/passwd | grep joshua
+joshua:x:1000:1000:,,,:/home/joshua:/usr/bin/zsh
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Which user is 1000 inside the container?</span>
+root@6de80090a66a:/srv/awesome-todo<span class="hljs-comment"># cat /etc/passwd | grep 1000</span>
+node:x:1000:1000::/home/node:/bin/bash
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="📝" src="https://twemoji.maxcdn.com/2/svg/1f4dd.svg" data-marp-twemoji=""/> Amendment <code>--user</code></h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="🖥" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/> Creating development shell on host</span>
+$ docker run \
+--rm \
+--interactive \
+--tty \
+--workdir /srv/awesome-todo \
+--volume `<span class="hljs-built_in">pwd</span>`:/srv/awesome-todo \
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="⭐" src="https://twemoji.maxcdn.com/2/svg/2b50.svg" data-marp-twemoji=""/> Specifying node as the user we want to start with</span>
+--user node \
+node:16.13.0 \
+bash
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Creating empty file</span>
+node@b48146bd2871:/srv/awesome-todo$ touch can-touch-this
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> File owned by node inside container</span>
+node@b48146bd2871:/srv/awesome-todo$ ls -lh can-touch-this
+-rw-r--r-- 1 node node 0 Nov 28 18:54 can-touch-this
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="🖥" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/> File owned by me outside container</span>
+$ ls -lh can-touch-this
+-rw-r--r-- 1 joshua joshua 0 Nov 28 18:54 can-touch-this
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="📥" src="https://twemoji.maxcdn.com/2/svg/1f4e5.svg" data-marp-twemoji=""/> Installing <code>node_modules</code></h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Set the modules folder location outside of bind mount</span>
+node@b48146bd2871:/srv/awesome-todo$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;--modules-folder /tmp/awesome-todo/node_modules&#x27;</span> &gt; .yarnrc
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Try starting the server as a test</span>
+node@b48146bd2871:/srv/awesome-todo$ yarn server
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ fastify start -d -w -l info -P src/app.mjs
+/bin/sh: 1: fastify: not found <span class="hljs-comment"># <img class="emoji" draggable="false" alt="😵" src="https://twemoji.maxcdn.com/2/svg/1f635.svg" data-marp-twemoji=""/> What went wrong?</span>
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Printing ${PATH} to debug</span>
+node@b48146bd2871:/srv/awesome-todo$ yarn server
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ <span class="hljs-built_in">echo</span> <span class="hljs-variable">${PATH}</span> | sed s/:/\\n/g | grep awesome-todo
+/srv/awesome-todo/packages/server/tmp/awesome-todo/node_modules/.bin
+/home/node/.config/yarn/link/tmp/awesome-todo/node_modules/.bin
+/srv/awesome-todo/tmp/awesome-todo/node_modules/.bin
+/srv/awesome-todo/tmp/awesome-todo/node_modules/.bin
+/home/node/.config/yarn/link/tmp/awesome-todo/node_modules/.bin
+/srv/awesome-todo/tmp/awesome-todo/node_modules/.bin
+Done <span class="hljs-keyword">in</span> 0.52s.
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Bug in yarn? <img class="emoji" draggable="false" alt="🤷" src="https://twemoji.maxcdn.com/2/svg/1f937.svg" data-marp-twemoji=""/></span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Updating PATH to be correct</span>
+node@b48146bd2871:/srv/awesome-todo$ <span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">${PATH}</span>:/tmp/awesome-todo/node_modules/.bin&quot;</span>
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Node.js cannot resolve the node_modules because they are not in the parent</span>
+node@b48146bd2871:/srv/awesome-todo$ yarn server
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ fastify start -d -w -l info -P src/app.mjs
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package <span class="hljs-string">&#x27;config&#x27;</span> imported from /srv/awesome-todo/packages/server/src/app.mjs
+<span class="hljs-comment"># -- snip --</span>
+
+<span class="hljs-comment"># Symlinking /tmp/awesome-todo/node_modules into the parent</span>
+node@b48146bd2871:/srv/awesome-todo$ ln -s /tmp/awesome-todo/node_modules
+
+<span class="hljs-comment"># Third times the charm</span>
+node@b48146bd2871:/srv/awesome-todo$ yarn server
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ fastify start -d -w -l info -P src/app.mjs
+Debugger listening on ws://0.0.0.0:9320/3867d4ef-3eb9-4f38-a781-e8f6eee92592
+For <span class="hljs-built_in">help</span>, see: https://nodejs.org/en/docs/inspector
+
+<span class="hljs-comment"># Good stuff <img class="emoji" draggable="false" alt="👍" src="https://twemoji.maxcdn.com/2/svg/1f44d.svg" data-marp-twemoji=""/></span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="➕" src="https://twemoji.maxcdn.com/2/svg/2795.svg" data-marp-twemoji=""/> Adding new dependencies</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Adding prettier for formatting server code</span>
+node@b48146bd2871:/srv/awesome-todo$ yarn workspace @awesome-todo/server add --dev prettier
+<span class="hljs-comment"># -- snip --</span>
+success Saved lockfile.
+success Saved 1 new dependency.
+info Direct dependencies
+info All dependencies
+└─ prettier@2.5.0
+Done <span class="hljs-keyword">in</span> 8.43s.
+Done <span class="hljs-keyword">in</span> 8.72s.
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Adding lint script to server package</span>
+node@b48146bd2871:/srv/awesome-todo$ cat packages/server/package.json | grep lint
+    <span class="hljs-string">&quot;lint&quot;</span>: <span class="hljs-string">&quot;prettier --check config src test&quot;</span>,
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="📦" src="https://twemoji.maxcdn.com/2/svg/1f4e6.svg" data-marp-twemoji=""/> Running lint script</span>
+node@b48146bd2871:/srv/awesome-todo$ yarn workspace @awesome-todo/server lint
+yarn workspace v1.22.15
+yarn run v1.22.15
+$ prettier --check config src <span class="hljs-built_in">test</span>
+Checking formatting...
+All matched files use Prettier code style!
+Done <span class="hljs-keyword">in</span> 1.03s.
+Done <span class="hljs-keyword">in</span> 1.33s.
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-marpit-fragments="4" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><code>Dockerfile</code></h1>
+<ul>
+<li data-marpit-fragment="1">We have made changes the development environment we want to share
+<ul>
+<li data-marpit-fragment="2">Installed dependencies <code>/tmp/awesome-todo/node_modules</code></li>
+<li data-marpit-fragment="3">Changed the <code>PATH</code> variable</li>
+</ul>
+</li>
+<li data-marpit-fragment="4">Lets document and automate these changes by providing a <code>Dockerfile</code></li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<pre><code class="language-dockerfile"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># ⚠ Cannot use sha256 if you want to support multi-arch <img class="emoji" draggable="false" alt="😔" src="https://twemoji.maxcdn.com/2/svg/1f614.svg" data-marp-twemoji=""/></span>
+<span class="hljs-keyword">ARG</span> NODE_VERSION=<span class="hljs-string">&quot;16.13.0&quot;</span>
+
+<span class="hljs-keyword">FROM</span> node:${NODE_VERSION} AS base
+
+<span class="hljs-keyword">FROM</span> base AS install
+
+<span class="hljs-keyword">ARG</span> PROJECT=<span class="hljs-string">&quot;awesome-todo&quot;</span>
+
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /srv/<span class="hljs-variable">${PROJECT}</span></span>
+
+<span class="hljs-comment"># If these files change...</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> package.json yarn.lock .yarnrc ./</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> packages/server/package.json packages/server/</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> packages/client/package.json packages/client/</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> packages/shared/package.json packages/shared/</span>
+
+<span class="hljs-comment"># ...this will run again when rebuilt</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> yarn install --frozen-lockfile</span>
+
+<span class="hljs-keyword">FROM</span> base AS dev
+
+<span class="hljs-keyword">ARG</span> PROJECT=<span class="hljs-string">&quot;awesome-todo&quot;</span>
+
+<span class="hljs-comment"># Copy just what we want from the previous stage</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=install /tmp/<span class="hljs-variable">${PROJECT}</span>/node_modules /tmp/<span class="hljs-variable">${PROJECT}</span>/node_modules</span>
+
+<span class="hljs-comment"># Updating PATH variable</span>
+<span class="hljs-keyword">ENV</span> PATH=<span class="hljs-string">&quot;${PATH}:/tmp/${PROJECT}/node_modules/.bin&quot;</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🐒" src="https://twemoji.maxcdn.com/2/svg/1f412.svg" data-marp-twemoji=""/> That is one chunky monkey</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="🔨" src="https://twemoji.maxcdn.com/2/svg/1f528.svg" data-marp-twemoji=""/> Enabling buildkit</span>
+$ <span class="hljs-built_in">export</span> DOCKER_BUILDKIT=1
+
+$ docker build --tag awesome-todo/dev --target node_modules .
+<span class="hljs-comment"># -- snip --</span>
+Successfully built afdf832b7e20
+Successfully tagged awesome-todo/dev:latest
+
+<span class="hljs-comment"># Eye-wateringly large image of 1.17GB! <img class="emoji" draggable="false" alt="😭" src="https://twemoji.maxcdn.com/2/svg/1f62d.svg" data-marp-twemoji=""/> </span>
+$ docker image ls awesome-todo/dev
+REPOSITORY         TAG       IMAGE ID       CREATED         SIZE
+awesome-todo/dev   latest    5c404aa9d660   4 minutes ago   1.17GB
+
+<span class="hljs-comment"># Build arguments to the rescue</span>
+$ docker build --tag awesome-todo/dev/slim --target node_modules --build-arg NODE_VERSION=16.13.0-slim .
+
+<span class="hljs-comment"># Bit better still quite large <img class="emoji" draggable="false" alt="🦣" src="https://twemoji.maxcdn.com/2/svg/1f9a3.svg" data-marp-twemoji=""/></span>
+$ docker image ls awesome-todo/dev/slim
+REPOSITORY              TAG       IMAGE ID       CREATED         SIZE
+awesome-todo/dev/slim   latest    387425ea14b8   2 minutes ago   444MB
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="🏔" src="https://twemoji.maxcdn.com/2/svg/1f3d4.svg" data-marp-twemoji=""/> We can go smaller</span>
+$ docker build --tag awesome-todo/dev/alpine --target node_modules --build-arg NODE_VERSION=16.13.0-alpine .
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="⚖" src="https://twemoji.maxcdn.com/2/svg/2696.svg" data-marp-twemoji=""/> Bit better...</span>
+$ docker image ls awesome-todo/dev/alpine
+REPOSITORY                TAG       IMAGE ID       CREATED          SIZE
+awesome-todo/dev/alpine   latest    283748b68275   49 seconds ago   380MB
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🖼️" src="https://twemoji.maxcdn.com/2/svg/1f5bc.svg" data-marp-twemoji=""/> Using the pre-built image</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="🖥" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/> Creating development shell on host</span>
+$ docker run \
+--rm \
+--interactive \
+--tty \
+--workdir /srv/awesome-todo \
+--volume `<span class="hljs-built_in">pwd</span>`:/srv/awesome-todo \
+--user node \
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="⭐" src="https://twemoji.maxcdn.com/2/svg/2b50.svg" data-marp-twemoji=""/> Using our pre-built image</span>
+awesome-todo/dev/alpine \
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="❌" src="https://twemoji.maxcdn.com/2/svg/274c.svg" data-marp-twemoji=""/> `bash` does not exist in alpine, using `sh` instead</span>
+yarn server
+
+yarn run v1.22.15
+$ yarn workspace @awesome-todo/server start
+$ fastify start -d -w -l info -P src/app.mjs
+Debugger listening on ws://0.0.0.0:9320/c3b7b8e9-a248-4c5f-896c-a8111468a369
+For <span class="hljs-built_in">help</span>, see: https://nodejs.org/en/docs/inspector
+
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="💪" src="https://twemoji.maxcdn.com/2/svg/1f4aa.svg" data-marp-twemoji=""/> Great, no yarn install required</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🪟" src="https://twemoji.maxcdn.com/2/svg/1fa9f.svg" data-marp-twemoji=""/> What about the client?</h1>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># <img class="emoji" draggable="false" alt="🖥" src="https://twemoji.maxcdn.com/2/svg/1f5a5.svg" data-marp-twemoji=""/> Creating development shell on host</span>
+$ docker run \
+--rm \
+--interactive \
+--tty \
+--workdir /srv/awesome-todo \
+--volume `<span class="hljs-built_in">pwd</span>`:/srv/awesome-todo \
+--user node \
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="⭐" src="https://twemoji.maxcdn.com/2/svg/2b50.svg" data-marp-twemoji=""/> Using our pre-built image</span>
+awesome-todo/dev/alpine \
+<span class="hljs-comment"># <img class="emoji" draggable="false" alt="❌" src="https://twemoji.maxcdn.com/2/svg/274c.svg" data-marp-twemoji=""/> `bash` does not exist in alpine, using `sh` instead</span>
+yarn client
+
+Compiled successfully!
+
+You can now view @awesome-todo/client <span class="hljs-keyword">in</span> the browser.
+
+  Local:            http://localhost:3001
+  On Your Network:  http://172.17.0.3:3001
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-marpit-fragments="7" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🥱" src="https://twemoji.maxcdn.com/2/svg/1f971.svg" data-marp-twemoji=""/> Tired of repeating yourself?</h1>
+<ul>
+<li data-marpit-fragment="1">
+<p>Maintaining these commands is becoming cumbersome</p>
+<ul>
+<li data-marpit-fragment="2">Lots of arguments</li>
+<li data-marpit-fragment="3">Some times repeated values
+<ul>
+<li data-marpit-fragment="4"><code>--workdir /srv/awesome-todo</code></li>
+<li data-marpit-fragment="5"><code>--volume </code>pwd<code>:/srv/awesome-todo</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-marpit-fragment="6">
+<p>We can use <strong>Docker Compose</strong>! <img class="emoji" draggable="false" alt="🐙" src="https://twemoji.maxcdn.com/2/svg/1f419.svg" data-marp-twemoji=""/></p>
+<ul>
+<li data-marpit-fragment="7">We need to create a <code>docker-compose.yaml</code></li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🐙" src="https://twemoji.maxcdn.com/2/svg/1f419.svg" data-marp-twemoji=""/> <code>docker-compose.yaml</code></h1>
+<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">client:</span>
+   <span class="hljs-comment"># docker build</span>
+    <span class="hljs-attr">build:</span>
+      <span class="hljs-attr">args:</span> <span class="hljs-comment"># --build-arg</span>
+        <span class="hljs-attr">NODE_VERSION:</span> <span class="hljs-number">16.13</span><span class="hljs-number">.0</span><span class="hljs-string">-alpine</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">awesome-todo/dev/alpine</span> <span class="hljs-comment"># --tag</span>
+    <span class="hljs-comment"># docker run</span>
+    <span class="hljs-attr">working_dir:</span> <span class="hljs-string">/srv/awesome-todo</span> <span class="hljs-comment"># --workdir</span>
+    <span class="hljs-attr">tty:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># --tty</span>
+    <span class="hljs-attr">stdin_open:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># --interactive</span>
+    <span class="hljs-attr">volumes:</span> <span class="hljs-comment"># --volume</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">.:/srv/awesome-todo</span> <span class="hljs-comment"># no more `pwd`, compose resolves the cwd for us</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">client</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🎊" src="https://twemoji.maxcdn.com/2/svg/1f38a.svg" data-marp-twemoji=""/> Adding server</h1>
+<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">client:</span>
+    <span class="hljs-attr">build:</span>
+      <span class="hljs-attr">args:</span>
+        <span class="hljs-attr">NODE_VERSION:</span> <span class="hljs-number">16.13</span><span class="hljs-number">.0</span><span class="hljs-string">-alpine</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">awesome-todo/dev/alpine</span>
+    <span class="hljs-attr">working_dir:</span> <span class="hljs-string">/srv/awesome-todo</span>
+    <span class="hljs-attr">tty:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">stdin_open:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">.:/srv/awesome-todo</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">client</span>
+  <span class="hljs-attr">server:</span> <span class="hljs-comment"># Repeating ourselves?</span>
+    <span class="hljs-attr">build:</span>
+      <span class="hljs-attr">args:</span>
+        <span class="hljs-attr">NODE_VERSION:</span> <span class="hljs-number">16.13</span><span class="hljs-number">.0</span><span class="hljs-string">-alpine</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">awesome-todo/dev/alpine</span>
+    <span class="hljs-attr">working_dir:</span> <span class="hljs-string">/srv/awesome-todo</span>
+    <span class="hljs-attr">tty:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">stdin_open:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">.:/srv/awesome-todo</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">server</span> <span class="hljs-comment"># Apart from this one change?</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🧙‍♂️" src="https://twemoji.maxcdn.com/2/svg/1f9d9-200d-2642-fe0f.svg" data-marp-twemoji=""/> Black magic</h1>
+<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span>
+
+<span class="hljs-attr">x-monorepo:</span>
+  <span class="hljs-string">&amp;monorepo</span> <span class="hljs-comment"># YAML ref</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">args:</span>
+      <span class="hljs-attr">NODE_VERSION:</span> <span class="hljs-number">16.13</span><span class="hljs-number">.0</span><span class="hljs-string">-alpine</span>
+  <span class="hljs-attr">image:</span> <span class="hljs-string">awesome-todo/dev/alpine</span>
+  <span class="hljs-attr">working_dir:</span> <span class="hljs-string">/srv/awesome-todo</span> <span class="hljs-comment"># <img class="emoji" draggable="false" alt="⬅" src="https://twemoji.maxcdn.com/2/svg/2b05.svg" data-marp-twemoji=""/> Still repeating myself here...</span>
+  <span class="hljs-attr">tty:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">stdin_open:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">volumes:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">.:/srv/awesome-todo</span> <span class="hljs-comment"># <img class="emoji" draggable="false" alt="⬅" src="https://twemoji.maxcdn.com/2/svg/2b05.svg" data-marp-twemoji=""/> ...and here</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">client:</span>
+    <span class="hljs-string">&lt;&lt;</span> <span class="hljs-string">:</span> <span class="hljs-string">*monorepo</span> <span class="hljs-comment"># Merging only works with objects</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">client</span>
+  <span class="hljs-attr">server:</span>
+    <span class="hljs-string">&lt;&lt;</span> <span class="hljs-string">:</span> <span class="hljs-meta">*monorepo</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">server</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="✍️" src="https://twemoji.maxcdn.com/2/svg/270d.svg" data-marp-twemoji=""/> Variable substitution</h1>
+<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span>
+
+<span class="hljs-attr">x-monorepo:</span>
+  <span class="hljs-string">&amp;monorepo</span> <span class="hljs-comment"># YAML ref</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">args:</span>
+      <span class="hljs-attr">NODE_VERSION:</span> <span class="hljs-number">16.13</span><span class="hljs-number">.0</span><span class="hljs-string">-alpine</span>
+  <span class="hljs-attr">image:</span> <span class="hljs-string">awesome-todo/dev/alpine</span>
+  <span class="hljs-attr">working_dir:</span> <span class="hljs-string">${WORKDIR}</span> <span class="hljs-comment"># <img class="emoji" draggable="false" alt="⬅" src="https://twemoji.maxcdn.com/2/svg/2b05.svg" data-marp-twemoji=""/> Using substitution</span>
+  <span class="hljs-attr">tty:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">stdin_open:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">volumes:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">.:${WORKDIR}</span> <span class="hljs-comment"># <img class="emoji" draggable="false" alt="⬅" src="https://twemoji.maxcdn.com/2/svg/2b05.svg" data-marp-twemoji=""/> Using substitution</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">client:</span>
+    <span class="hljs-string">&lt;&lt;</span> <span class="hljs-string">:</span> <span class="hljs-string">*monorepo</span> <span class="hljs-comment"># Merging only works with objects</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">client</span>
+  <span class="hljs-attr">server:</span>
+    <span class="hljs-string">&lt;&lt;</span> <span class="hljs-string">:</span> <span class="hljs-meta">*monorepo</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">server</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🧅" src="https://twemoji.maxcdn.com/2/svg/1f9c5.svg" data-marp-twemoji=""/> <code>Makefile</code></h1>
+<pre><code class="language-makefile"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">export</span> WORKDIR = /srv/todo
+<span class="hljs-keyword">export</span> CLIENT_PORT = 3001
+<span class="hljs-keyword">export</span> SERVER_PORT = 3000
+<span class="hljs-keyword">export</span> MONGO_PORT = 27017
+<span class="hljs-keyword">export</span> IMAGE_TAG = awesome-todo/dev/alpine
+<span class="hljs-keyword">export</span> NODE_VERSION = 16.13.0-alpine
+
+<span class="hljs-section">up:</span>
+	docker compose up <span class="hljs-variable">$(SERVICE)</span>
+
+<span class="hljs-section">down:</span>
+	docker compose down
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="✨" src="https://twemoji.maxcdn.com/2/svg/2728.svg" data-marp-twemoji=""/> Final touches</h1>
+<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span>
+
+<span class="hljs-attr">x-monorepo:</span>
+  <span class="hljs-meta">&amp;monorepo</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">args:</span>
+      <span class="hljs-attr">NODE_VERSION:</span> <span class="hljs-string">${NODE_VERSION}</span>
+  <span class="hljs-attr">image:</span> <span class="hljs-string">${IMAGE_TAG}</span>
+  <span class="hljs-attr">working_dir:</span> <span class="hljs-string">${WORKDIR}</span>
+  <span class="hljs-attr">tty:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">stdin_open:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">volumes:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">.:${WORKDIR}</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">database:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">mongo:5.0.4</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">mongo_data_db:/data/db</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">${MONGO_PORT}:27017</span>
+  <span class="hljs-attr">server:</span>
+    <span class="hljs-string">&lt;&lt;</span> <span class="hljs-string">:</span> <span class="hljs-meta">*monorepo</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">server</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">MONGO_URI:</span> <span class="hljs-string">mongodb://database:27017/todo</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">${SERVER_PORT}:3000</span>
+  <span class="hljs-attr">client:</span>
+    <span class="hljs-string">&lt;&lt;</span> <span class="hljs-string">:</span> <span class="hljs-meta">*monorepo</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">client</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">${CLIENT_PORT}:3000</span>
+
+<span class="hljs-attr">volumes:</span>
+  <span class="hljs-attr">mongo_data_db:</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🚂" src="https://twemoji.maxcdn.com/2/svg/1f682.svg" data-marp-twemoji=""/> Portable CI workflows</h1>
+<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">name:</span> <span class="hljs-string">Awesome</span> <span class="hljs-string">TODO</span> <span class="hljs-string">CI</span>
+
+<span class="hljs-attr">on:</span>
+  <span class="hljs-attr">pull_request:</span> <span class="hljs-string">~</span>
+  <span class="hljs-attr">push:</span>
+    <span class="hljs-attr">branches:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">master</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">develop</span>
+
+<span class="hljs-attr">env:</span>
+  <span class="hljs-attr">DOCKER_USERNAME:</span> <span class="hljs-string">${{</span> <span class="hljs-string">github.actor</span> <span class="hljs-string">}}</span>
+  <span class="hljs-attr">DOCKER_PASSWORD:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">}}</span>
+
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">lint:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">Lint</span>
+    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-20.04</span>
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">source</span> <span class="hljs-string">code</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Login</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">make</span> <span class="hljs-string">login</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Lint</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">make</span> <span class="hljs-string">lint</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Push</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">make</span> <span class="hljs-string">push</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🤞" src="https://twemoji.maxcdn.com/2/svg/1f91e.svg" data-marp-twemoji=""/> Image caching</h1>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>make lint
+docker compose run --rm server yarn lint
+[+] Running 2/1
+ ⠿ Network awesome-todo_default         Created                                                                           0.4s
+ ⠿ Volume &quot;awesome-todo_mongo_data_db&quot;  Created                                                                           0.0s
+[+] Running 6/6
+ ⠿ server Pulled                                                                                                         11.7s
+   ⠿ 97518928ae5f Already exists                                                                                          0.0s
+   ⠿ 784cd1fd612b Already exists                                                                                          0.0s
+   ⠿ 0ec5d186b713 Already exists                                                                                          0.0s
+   ⠿ 98dc27ad6276 Already exists                                                                                          0.0s
+   ⠿ d6532878b3da Pull complete                                                                                           9.9s
+[+] Building 0.2s (14/14) FINISHED
+ =&gt; [internal] load build definition from Dockerfile                                                                      0.1s
+ =&gt; =&gt; transferring dockerfile: 785B                                                                                      0.0s
+ =&gt; [internal] load .dockerignore                                                                                         0.1s
+ =&gt; =&gt; transferring context: 53B                                                                                          0.0s
+ =&gt; [internal] load metadata for docker.io/library/node:16.13.0-alpine                                                    0.0s
+ =&gt; [base 1/1] FROM docker.io/library/node:16.13.0-alpine                                                                 0.0s
+ =&gt; [internal] load build context                                                                                         0.1s
+ =&gt; =&gt; transferring context: 605.57kB                                                                                     0.0s
+ =&gt; CACHED [install 1/6] WORKDIR /srv/awesome-todo                                                                        0.0s
+ =&gt; CACHED [install 2/6] COPY package.json yarn.lock .yarnrc ./                                                           0.0s
+ =&gt; CACHED [install 3/6] COPY packages/server/package.json packages/server/                                               0.0s
+ =&gt; CACHED [install 4/6] COPY packages/client/package.json packages/client/                                               0.0s
+ =&gt; CACHED [install 5/6] COPY packages/shared/package.json packages/shared/                                               0.0s
+ =&gt; CACHED [install 6/6] RUN yarn install --frozen-lockfile                                                               0.0s
+ =&gt; CACHED [dev 1/1] COPY --from=install /tmp/awesome-todo/node_modules /tmp/awesome-todo/node_modules                    0.0s
+ =&gt; exporting to image                                                                                                    0.0s
+ =&gt; =&gt; exporting layers                                                                                                   0.0s
+ =&gt; =&gt; writing image sha256:12eb9c609df4ebb4612e256edfcdb4b88ab8fa0b8d72e9f1170313ef1abcb81b                              0.0s
+ =&gt; =&gt; naming to docker.pkg.github.com/joshua-barnett/awesome-todo/dev                                                    0.0s
+ =&gt; exporting cache                                                                                                       0.0s
+ =&gt; =&gt; preparing build cache for export                                                                                   0.0s
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+yarn run v1.22.15
+$ yarn workspaces run lint
+
+&gt; @awesome-todo/client
+$ prettier --check public src
+Checking formatting...
+All matched files use Prettier code style!
+
+&gt; @awesome-todo/server
+$ prettier --check config src test
+Checking formatting...
+All matched files use Prettier code style!
+
+&gt; @awesome-todo/shared
+$ prettier --check src
+Checking formatting...
+All matched files use Prettier code style!
+Done in 4.57s.
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="📽️" src="https://twemoji.maxcdn.com/2/svg/1f4fd.svg" data-marp-twemoji=""/> Demo</h1>
+<pre><code class="language-shell"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>make up
+docker compose up --detach
+[+] Running 3/3
+ ⠿ client Pulled                                                                                                          1.9s
+ ⠿ database Pulled                                                                                                        1.6s
+ ⠿ server Pulled                                                                                                          2.6s
+[+] Building 0.2s (14/14) FINISHED
+ =&gt; [internal] load build definition from Dockerfile                                                                      0.1s
+ =&gt; =&gt; transferring dockerfile: 785B                                                                                      0.0s
+ =&gt; [internal] load .dockerignore                                                                                         0.1s
+ =&gt; =&gt; transferring context: 53B                                                                                          0.0s
+ =&gt; [internal] load metadata for docker.io/library/node:16.13.0-alpine                                                    0.0s
+ =&gt; [internal] load build context                                                                                         0.1s
+ =&gt; =&gt; transferring context: 605.57kB                                                                                     0.0s
+ =&gt; [base 1/1] FROM docker.io/library/node:16.13.0-alpine                                                                 0.0s
+ =&gt; CACHED [install 1/6] WORKDIR /srv/awesome-todo                                                                        0.0s
+ =&gt; CACHED [install 2/6] COPY package.json yarn.lock .yarnrc ./                                                           0.0s
+ =&gt; CACHED [install 3/6] COPY packages/server/package.json packages/server/                                               0.0s
+ =&gt; CACHED [install 4/6] COPY packages/client/package.json packages/client/                                               0.0s
+ =&gt; CACHED [install 5/6] COPY packages/shared/package.json packages/shared/                                               0.0s
+ =&gt; CACHED [install 6/6] RUN yarn install --frozen-lockfile                                                               0.0s
+ =&gt; CACHED [dev 1/1] COPY --from=install /tmp/awesome-todo/node_modules /tmp/awesome-todo/node_modules                    0.0s
+ =&gt; exporting to image                                                                                                    0.0s
+ =&gt; =&gt; exporting layers                                                                                                   0.0s
+ =&gt; =&gt; writing image sha256:12eb9c609df4ebb4612e256edfcdb4b88ab8fa0b8d72e9f1170313ef1abcb81b                              0.0s
+ =&gt; =&gt; naming to docker.pkg.github.com/joshua-barnett/awesome-todo/dev                                                    0.0s
+ =&gt; exporting cache                                                                                                       0.0s
+ =&gt; =&gt; preparing build cache for export                                                                                   0.0s
+
+[+] Running 5/5
+ ⠿ Network awesome-todo_default         Created                                                                           0.0s
+ ⠿ Volume &quot;awesome-todo_mongo_data_db&quot;  Created                                                                           0.0s
+ ⠿ Container awesome-todo-database-1    Started                                                                           1.2s
+ ⠿ Container awesome-todo-server-1      Started                                                                           1.2s
+ ⠿ Container awesome-todo-client-1      Started                                                                           1.0s
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
+<h1><img class="emoji" draggable="false" alt="🙋" src="https://twemoji.maxcdn.com/2/svg/1f64b.svg" data-marp-twemoji=""/> Questions?</h1>
+<p><img src="./assets/questions.gif" alt="questions" /></p>
+</section>
+<script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();
+</script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="0" tabindex="0"><p>- Basic TODO API Example
+    - MongoDB
+
+- Hypochondriac View
+    - Which version of Yarn did you use?
+    - Which version of Node.js did you use?
+    - What operating system are you using?
+    - What architecture running on?
+        - x64
+        - x86_64
+        - aarch64 (Apple M1)
+    - Is Node.js in your path?
+    - How is it installed are you managing it with nvm?
+    - What does Node.js depend on?
+        # Linux
+        ```bash
+        $ which node
+        /home/joshua/.nvm/versions/node/v16.13.0/bin/node
+
+        $ ldd /home/joshua/.nvm/versions/node/v16.13.0/bin/node
+            linux-vdso.so.1 (0x00007ffc1773c000)
+            libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f4aa8293000)
+            libstdc++.so.6 =&gt; /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f4aa80b2000)
+            libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f4aa7f63000)
+            libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f4aa7f48000)
+            libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f4aa7f25000)
+            libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f4aa7d33000)
+            /lib64/ld-linux-x86-64.so.2 (0x00007f4aa82ac000)
+        ```
+
+        # Windows
+        ```cmd
+        C:\Users\Joshua&gt;where node
+        C:\Program Files\nodejs\node.exe
+
+        C:\Users\Joshua&gt;dumpbin /dependents &quot;C:\Program Files\nodejs\node.exe&quot;
+        Microsoft (R) COFF/PE Dumper Version 14.29.30133.0
+        Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+        Dump of file C:\Program Files\nodejs\node.exe
+
+        File Type: EXECUTABLE IMAGE
+
+        Image has the following dependencies:
+
+            dbghelp.dll
+            WS2_32.dll
+            IPHLPAPI.DLL
+            PSAPI.DLL
+            USERENV.dll
+            ADVAPI32.dll
+            USER32.dll
+            CRYPT32.dll
+            bcrypt.dll
+            KERNEL32.dll
+            WINMM.dll
+
+        Summary
+
+            2D9000 .data
+            D0000 .pdata
+            2647000 .rdata
+            1D000 .reloc
+            25000 .rsrc
+            1118000 .text
+                1000 _RDATA
+        ```
+    - Which version of libstdc++ is it using?
+    - What NPM registry are you using? Just the default?
+    - Which DNS server are you using?
+    - What ISP are you using?
+    - What's your internet speed like?
+
+- You and your friend want to work on the project together.
+    - He's a good developer but doesn't know how to Linux/Windows he wants to use what he's most familiar and productive with e.g. macOS.
+
+- Enter Docker
+    - ./assets/it-works-on-my-machine.jpg
+    - We'll ship your file system*
+    - Lets you target Kuberenetes as your deployment target.
+        - You want Kubernetes because it makes scaling your application and infrastructure easy.
+
+- Okay how to we Dockerize this application
+
+    - Covers production use case, not development.
+        - https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
+        - https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+        - https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md
+    - Covers development.
+        - https://www.docker.com/blog/keep-nodejs-rockin-in-docker/
+
+- Dockerfile
+    - FROM node (nothing else)
+
+Okay this works fine but where is our code?
+
+Bind mount, okay we have our code.
+
+Wait why doesn't our node_modules work?
+
+- C++ addons
+https://nodejs.org/api/addons.html
+
+Although our code is JavaScript it like Node.js is dependent on Node modules which depend on C++ addons.
+
+Often because there's something already written in C++ we want to make use of.
+
+Or because the use case is computationally intensive (crypto) and needs to be as fast as possible.
+
+- rm -rf node_modules
+npm install
+
+Wait this is really slow why?
+- macOS
+
+Okay well lets install it in the parent.
+
+or try symlinking.
+
+- Benefits of installing node_modules as part of the development image.
+
+- We have to do it on the CI anyway so why not store these node_modules in a Docker image and use it as a cache.
+
+- This means if our project has been tested and ran in the CI environment our only bottle neck is downloading the image
+
+(no compilation or module resolution required)
+
+We want to add a database.
+
+- What is a Docker image?
+    - It's just a tar archive with some magic around it.
+
+- Dockerfile
+    - Multi-stage builds
+
+- Installing node_modules on host filesystem is slow on macOS, fine on Linux, meh on Windows.
+
+
+# - Best Case Scenario
+#
+# So maybe you developing your application and hosting it on the same box.
+#
+# Questionable choice (for reasons I won't go into right now, but cool you do you).
+#
+# - Power cut at your house your application goes down and you loose market share and revenue because of it.
+#
+# Okay maybe having it on my home computer was a bad idea.
+#
+# Lets pack up my computer and send it to the nearest data center.
+#
+# They'll never have a power cut right?
+#
+# Nope, they're probably sensible have have things like Uninterruptible Power Supplies (UPS).
+#
+# Oh wait OVHcloud burns down, your server with it and any source code you have.
+#
+# https://www.reuters.com/article/us-france-ovh-fire-idUSKBN2B20NU
+#
+# Okay no worries we've backed up the server.
+#
+# Great, so now you find a new hosting provider and you redeploy your site.
+#
+# You repoint your DNS, great only 1 day of downtime.
+#
+# Maybe you even deploy it to a different server provider as well in advance for backup.
+#
+# A couple months later someone posts your application to Hacker News, and it gets upvoted to the top for a day.
+#
+# Suddenly your TODO app is a viral hit and on that same day same day your website is responding slower and slower to new visitors, until it stops responding all together.
+#
+# - https://www.forbes.com/sites/davidthier/2016/07/08/pokemon-go-servers-down-again/?sh=4dba14c229c9
+# - https://www.vox.com/2016/7/16/12207552/pokemon-go-server-outage
+#
+# You phone up SuperCheapServers Inc. and request if you can rent some more servers in the rack.
+#
+# They come back with sorry we don't have any surplus servers at the moment but we can order some in might get here in 2-3 days?
+#
+# Not good enough, you want to catch the wave of good press coming your way?
+#
+# So where do you turn to next? The CLOUD!
+#
+# Now you are only an button press away from getting a new machine but you still have to setup unzip your project and set it up.
+#
+# Oh whoops turns out you missed the wave and now you're overpaying on servers when your demand doesn't match.
+#
+# Doing this setup and teardown is a pain lets automate it.
+#
+# So maybe you're using Ubuntu 20.04 to develop your application and deploying your application on a Ubuntu 20.04 EC2 instance in AWS?
+#
+# Maybe you're company mandates you use Ubuntu 20.04 everywhere including development environments.</p><p>Welcome to my presentation on 'Docker for development'</p></div><div class="bespoke-marp-note" data-index="1" tabindex="0"><p>But first.
+
+Let's cover why you might want to use Docker for your development environment.
+
+Recently I went to a conference in Seattle and a I met a bunch of interesting people.
+
+One person I met had developed a &quot;cross platform&quot; 2D game library, with basic examples and everything.
+
+While at the airport I had a spare moment so I thought I'll download it, build it and run one of the examples.
+
+So this is his documentation which I followed.</p></div><div class="bespoke-marp-note" data-index="2" tabindex="0"><p>Once I had all the dependencies installed.
+
+I ran the build script, and it compiled successfully (ignoring a few compiler warnings).
+
+When it comes to running an example, you'll see it fails with a relatively informative error about failing to create a window.
+
+So this is not a great experience as a developer.
+
+Especially once who has not experience of the project.
+
+I know a bit of C/C++ and maybe a bit of CMake, but do I know enough about GLFW to immediately know how to to fix this issue?
+
+No!</p></div><div class="bespoke-marp-note" data-index="3" tabindex="0"><p>Looking at this you might be thinking.
+
+Well serves you right for using C.
+
+This is why interpretted languages and JIT compilers exist.
+
+So I can write once and run everywhere.</p></div><div class="bespoke-marp-note" data-index="5" tabindex="0"><p>So given most things have some dependency or another on the operating system.
+
+How do we solve this issue in a way where we do not have to worry about the environment we are running in.</p></div><div class="bespoke-marp-note" data-index="18" tabindex="0"><p>I was going to go into more detail here about how you can access the Docker VM directly.
+
+Explain a bit about how OverlayFS works, and other parts of how it is implemented on different platforms.
+
+However, I don't think I've got enough time for that.
+
+So I'll wave it away as magic for now.
+
+But here's an article explaining a bit more about how it works.
+
+Turns out sync file systems isn't just about moving and syncing files.
+
+If you want things like hot reload to work you will also need to propagate and communicate file events between systems, so it gets quite complicated.
+
+All your really need to know is bind mounts are great!
+
+But you should pick when to use them wisely because they don't work great on all platforms and can be very slow in certain use cases.
+
+Namely...
+
+- Installation of node_modules
+- Working directories for things like databases</p><p>```bash
+$ docker inspect dev | jq '.[].GraphDriver.Data.MergedDir'
+&quot;/var/lib/docker/overlay2/100be0d438a58870743f604ae5fbe49f46a2b3d1a0cc02a7809171396fff1b10/merged&quot;
+
+# Enter Docker VM on macOS
+$ nc -U ~/Library/Containers/com.docker.docker/Data/debug-shell.sock
+
+# Inside Docker VM
+$ cd /var/lib/docker/overlay2/100be0d438a58870743f604ae5fbe49f46a2b3d1a0cc02a7809171396fff1b10/merged
+```</p></div><div class="bespoke-marp-note" data-index="19" tabindex="0"><p>This problem with the bind mount implementation is exacerbated in I/O heavy use cases.
+
+Such as database data directories and node_modules installation.</p></div><div class="bespoke-marp-note" data-index="32" tabindex="0"><p>Now we could put this command in our readme in addition to the previous commands.
+
+However, it would probably be a better user experience to put it in a shell script.</p></div><div class="bespoke-marp-note" data-index="55" tabindex="0"><p>```bash
+root@a89e35bc7589:/srv/paysite-frontend# time yarn install --frozen-lockfile
+real    15m12.459s
+user    3m2.007s
+sys     2m52.669s
+
+$ du -sh node_modules */node_modules
+1.3G    node_modules
+20M     ma/node_modules
+136K    shared/node_modules
+64M     tour/node_modules
+```</p><p>&lt;iframe src=&quot;https://www.docker.com/blog/deep-dive-into-new-docker-desktop-filesharing-implementation/&quot;&gt;&lt;/iframe&gt;</p><p>&lt;style scoped&gt;
+section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 80%;
+}
+
+h1 {
+    grid-column-end: span 2;
+}
+/* Wraps unordered lists into columns */
+/* section &gt; * {
+    flex: 1 0 auto;
+} */
+&lt;/style&gt;</p><p>So let's imagine you start a new project.
+
+You've decided to make a TODO app, because the thousands of existing ones do not fit your specific needs.
+
+In the begunning there's all this possibility space yet to be realized.
+
+You might have a bunch of questions that you answered without even thinking twice about.</p><p>&lt;iframe src=&quot;http://localhost:3001/&quot; title=&quot;Awesome TODO&quot; height=&quot;100%&quot;&gt;&lt;/iframe&gt;</p><p>```shell
+$ yarn init
+yarn init v1.22.17
+question name (todo):
+question version (1.0.0):
+question description: Better than the rest?
+question entry point (index.js): src/main.js
+question repository url: ¯\_(ツ)_/¯
+question author: Me
+question license (MIT): WTFPL
+question private: true
+success Saved package.json
+Done in 57.59s.
+
+# --snip--
+```
+
+* Let's build a TODO app! ✅
+* I'm a bullet point</p></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@1.4.2/lib/bespoke.js.LICENSE.txt */
+!function(){"use strict";const e=document.body,t=(...e)=>history.replaceState(...e),n="presenter",r="next",o=["",n,r],a="data-bespoke-marp-",i=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const a=e.toString();return`${t}//${n}${r}${a?"?":""}${a}${o}`},s=()=>e.dataset.bespokeView,l=e=>new URLSearchParams(location.search).get(e),c=(e,n={})=>{var r;const o={location,setter:t,...n},a=new URLSearchParams(o.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?a.set(t,n):a.delete(t)}try{o.setter({...null!==(r=window.history.state)&&void 0!==r?r:{}},"",i(a,o.location))}catch(e){console.error(e)}},d=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(e){return!1}})(),f=e=>{try{return localStorage.getItem(e)}catch(e){return null}},u=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch(e){return!1}},m=e=>{try{return localStorage.removeItem(e),!0}catch(e){return!1}},g=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},p=e=>{e.parent.classList.add("bespoke-marp-parent"),e.slides.forEach((e=>e.classList.add("bespoke-marp-slide"))),e.on("activate",(t=>{const n="bespoke-marp-active",r=t.slide,o=r.classList,a=!o.contains(n);if(e.slides.forEach((e=>{e.classList.remove(n),g(e,!0)})),o.add(n),g(r,!1),a){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}}))},v=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map((e=>[null,...e.querySelectorAll("[data-marpit-fragment]")]))});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach(((e,t)=>{e.forEach(((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${a}fragment`,(i?"":"in")+"active");const s=`${a}current-fragment`;t===r&&n===o?e.setAttribute(s,"current"):e.removeAttribute(s)}))})),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",(({fragment:a=!0})=>{if(a){if(r(1))return o(t,n+1),!1;const a=t+1;e.fragments[a]&&o(a,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const a=e.fragments[t+1];a&&o(t+1,a.length-1)}})),e.on("prev",(({fragment:a=!0})=>{if(r(-1)&&a)return o(t,n-1),!1;const i=t-1;e.fragments[i]&&o(i,e.fragments[i].length-1)})),e.on("slide",(({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)})),o(0,0)},h=document,y=()=>!(!h.fullscreenEnabled&&!h.webkitFullscreenEnabled),x=()=>!(!h.fullscreenElement&&!h.webkitFullscreenElement),w=e=>{e.fullscreen=()=>{y()&&(async()=>{return x()?null===(e=h.exitFullscreen||h.webkitExitFullscreen)||void 0===e?void 0:e.call(h):((e=h.body)=>{var t;return null===(t=e.requestFullscreen||e.webkitRequestFullscreen)||void 0===t?void 0:t.call(e)})();var e})()},document.addEventListener("keydown",(t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!y()||(e.fullscreen(),t.preventDefault())}))},b="bespoke-marp-inactive",k=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let a;const i=()=>{a&&clearTimeout(a),a=setTimeout((()=>{r.add(b),o()}),e),r.contains(b)&&(r.remove(b),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,i);setTimeout(i,0)},E=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],L=e=>{e.parent.addEventListener("keydown",(e=>{if(!e.target)return;const t=e.target;(E.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()}))},$=e=>{window.addEventListener("load",(()=>{for(const t of e.slides){const e=t.querySelector("[data-marp-fitting]")?"":"hideable";t.setAttribute(`${a}load`,e)}}))},P=({interval:e=250}={})=>t=>{document.addEventListener("keydown",(e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()}));let n,r,o=0;t.parent.addEventListener("wheel",(a=>{let i=!1;const s=(e,t)=>{e&&(i=i||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),(null==e?void 0:e.parentElement)&&s(e.parentElement,t)};if(0!==a.deltaX&&s(a.target,"X"),0!==a.deltaY&&s(a.target,"Y"),i)return;a.preventDefault();const l=Math.sqrt(a.deltaX**2+a.deltaY**2);if(void 0!==a.wheelDelta){if(void 0===a.webkitForce&&Math.abs(a.wheelDelta)<40)return;if(a.deltaMode===a.DOM_DELTA_PIXEL&&l<4)return}else if(a.deltaMode===a.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout((()=>{n=0}),e);const c=Date.now()-o<e,d=l<=n;if(n=l,c||d)return;let f;(a.deltaX>0||a.deltaY>0)&&(f="next"),(a.deltaX<0||a.deltaY<0)&&(f="prev"),f&&(t[f](),o=Date.now())}))},S=(e=".bespoke-marp-osc")=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${a}osc=${JSON.stringify(e)}]`).forEach(n)};return y()||n("fullscreen",(e=>e.style.display="none")),d||n("presenter",(e=>{e.disabled=!0,e.title="Presenter view is disabled due to restricted localStorage."})),e=>{t.addEventListener("click",(t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?null==e||e.fullscreen():"presenter"===n&&e.openPresenterView()}})),e.parent.appendChild(t),e.on("activate",(({index:t})=>{n("page",(n=>n.textContent=`Page ${t+1} of ${e.slides.length}`))})),e.on("fragment",(({index:t,fragments:r,fragmentIndex:o})=>{n("prev",(e=>e.disabled=0===t&&0===o)),n("next",(n=>n.disabled=t===e.slides.length-1&&o===r.length-1))})),e.on("marp-active",(()=>g(t,!1))),e.on("marp-inactive",(()=>g(t,!0))),y()&&(e=>{for(const t of["","webkit"])h.addEventListener(t+"fullscreenchange",e)})((()=>n("fullscreen",(e=>e.classList.toggle("exit",y()&&x())))))}},I=e=>{window.addEventListener("message",(t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),a=Number.parseInt(n,10)+1;a>=e.fragments[o].length&&(o+=1,a=0),e.slide(o,{fragment:a})}}))};var T=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"];let A=e=>String(e).replace(/[&<>"']/g,(e=>`&${C[e]};`)),C={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},N="dangerouslySetInnerHTML",K={className:"class",htmlFor:"for"},O={};function D(e,t){let n=[],r="";t=t||{};for(let e=arguments.length;e-- >2;)n.push(arguments[e]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(let e in t)!1!==t[e]&&null!=t[e]&&e!==N&&(r+=` ${K[e]?K[e]:A(e)}="${A(t[e])}"`);r+=">"}if(-1===T.indexOf(e)){if(t[N])r+=t[N].__html;else for(;n.length;){let e=n.pop();if(e)if(e.pop)for(let t=e.length;t--;)n.push(e[t]);else r+=!0===O[e]?e:A(e)}r+=e?`</${e}>`:""}return O[r]=!0,r}const M=({children:e})=>D(null,null,...e),q="bespoke-marp-presenter-",_={container:`${q}container`,next:`${q}next`,nextContainer:`${q}next-container`,noteContainer:`${q}note-container`,infoContainer:`${q}info-container`,infoPage:`${q}info-page`,infoPageText:`${q}info-page-text`,infoPagePrev:`${q}info-page-prev`,infoPageNext:`${q}info-page-next`,infoTime:`${q}info-time`,infoTimer:`${q}info-timer`},U=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=_.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",D(M,null,D("div",{class:_.nextContainer},D("iframe",{class:_.next,src:"?view=next"})),D("div",{class:_.noteContainer}),D("div",{class:_.infoContainer},D("div",{class:_.infoPage},D("button",{class:_.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),D("span",{class:_.infoPageText}),D("button",{class:_.infoPageNext,tabindex:"-1",title:"Next"},"Next")),D("time",{class:_.infoTime,title:"Current time"}),D("div",{class:_.infoTimer})))),t})(e.parent)),(e=>{r(_.nextContainer).addEventListener("click",(()=>e.next()));const t=r(_.next),n=(o=t,(e,t)=>{var n;return null===(n=o.contentWindow)||void 0===n?void 0:n.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin)});var o;t.addEventListener("load",(()=>{r(_.nextContainer).classList.add("active"),n(e.slide(),e.fragmentIndex),e.on("fragment",(({index:e,fragmentIndex:t})=>n(e,t)))}));const a=document.querySelectorAll(".bespoke-marp-note");a.forEach((e=>{e.addEventListener("keydown",(e=>e.stopPropagation())),r(_.noteContainer).appendChild(e)})),e.on("activate",(()=>a.forEach((t=>t.classList.toggle("active",t.dataset.index==e.slide()))))),e.on("activate",(({index:t})=>{r(_.infoPageText).textContent=`${t+1} / ${e.slides.length}`}));const i=r(_.infoPagePrev),s=r(_.infoPageNext);i.addEventListener("click",(t=>{i.blur(),e.prev({fragment:!t.shiftKey})})),s.addEventListener("click",(t=>{s.blur(),e.next({fragment:!t.shiftKey})})),e.on("fragment",(({index:t,fragments:n,fragmentIndex:r})=>{i.disabled=0===t&&0===r,s.disabled=t===e.slides.length-1&&r===n.length-1}));const l=()=>r(_.infoTime).textContent=(new Date).toLocaleTimeString();l(),setInterval(l,250)})(e)},V=e=>{if(!(e=>e.syncKey&&"string"==typeof e.syncKey)(e))throw new Error("The current instance of Bespoke.js is invalid for Marp bespoke presenter plugin.");Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:X},presenterUrl:{enumerable:!0,get:F}}),d&&document.addEventListener("keydown",(t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())}))};function X(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,q+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function F(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),i(e)}const B=e=>{const t=s();return t===r&&e.appendChild(document.createElement("span")),{"":V,[n]:U,[r]:I}[t]},R=e=>{e.on("activate",(t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach((n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"}))}))},j=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},H=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{((t,n)=>{const{min:r,max:o}=Math,{fragments:a,slides:i}=e,s=o(0,r(t,i.length-1)),l=o(0,r(n||0,a[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((j(location.hash.slice(1))||1)-1,t.fragment?j(l("f")||""):null)};e.on("fragment",(({index:e,fragmentIndex:r})=>{n||c({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})})),setTimeout((()=>{o(),window.addEventListener("hashchange",(()=>r((()=>{o({fragment:!1}),c({f:void 0})})))),window.addEventListener("popstate",(()=>{n||r((()=>o()))})),n=!1}),0)}},Y=(e={})=>{var n;const r=e.key||(null===(n=window.history.state)||void 0===n?void 0:n.marpBespokeSyncKey)||Math.random().toString(36).slice(2),o=`bespoke-marp-sync-${r}`;var a;a={marpBespokeSyncKey:r},c({},{setter:(e,...n)=>t({...e,...a},...n)});const i=()=>{const e=f(o);return e?JSON.parse(e):Object.create(null)},s=e=>{const t=i(),n={...t,...e(t)};return u(o,JSON.stringify(n)),n},l=()=>{window.removeEventListener("pageshow",l),s((e=>({reference:(e.reference||0)+1})))};return e=>{l(),Object.defineProperty(e,"syncKey",{value:r,enumerable:!0});let t=!0;setTimeout((()=>{e.on("fragment",(e=>{t&&s((()=>({index:e.index,fragmentIndex:e.fragmentIndex})))}))}),0),window.addEventListener("storage",(n=>{if(n.key===o&&n.oldValue&&n.newValue){const r=JSON.parse(n.oldValue),o=JSON.parse(n.newValue);if(r.index!==o.index||r.fragmentIndex!==o.fragmentIndex)try{t=!1,e.slide(o.index,{fragment:o.fragmentIndex})}finally{t=!0}}}));const n=()=>{const{reference:e}=i();void 0===e||e<=1?m(o):s((()=>({reference:e-1})))};window.addEventListener("pagehide",(e=>{e.persisted&&window.addEventListener("pageshow",l),n()})),e.on("destroy",n)}},{PI:J,abs:W,sqrt:z,atan2:G}=Math,Q={passive:!0},Z=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,a=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",(({touches:e})=>{r=1===e.length?a(e[0]):void 0}),Q),o.addEventListener("touchmove",(e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=a(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=z(W(n)**2+W(o)**2),r.radian=G(n,o)}else r=void 0})),o.addEventListener("touchend",(o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+J)%(2*J)-J;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}}),Q)},ee="_tA",te=e=>{const t=document.documentTransition;if(!t)return;let n;e._tP=!1;const r=(n,{back:r,cond:o})=>a=>{const i=e.slides[e.slide()].querySelector("section[data-transition]");if(!i)return!0;const s=document.querySelector(".bespoke-marp-osc"),l=s?[s]:void 0;if(e._tP){if(a._tA){e._tP=!1;try{t.start({sharedElements:l}).catch((()=>{}))}catch(e){}return!0}}else{if(!o(a))return!0;e._tP=t.prepare({rootTransition:a.back||r?i.dataset.transitionBack:i.dataset.transition,sharedElements:l}).then((()=>n(a))).catch((()=>n(a)))}return!1};e.on("prev",r((t=>e.prev({...t,[ee]:!0})),{back:!0,cond:e=>{var t;return e.index>0&&!((null===(t=e.fragment)||void 0===t||t)&&n.fragmentIndex>0)}})),e.on("next",r((t=>e.next({...t,[ee]:!0})),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout((()=>{e.on("slide",r((t=>e.slide(t.index,{...t,[ee]:!0})),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))}),0),e.on("fragment",(e=>{n=e}))};let ne;const re=()=>(void 0===ne&&(ne="wakeLock"in navigator&&navigator.wakeLock),ne),oe=async()=>{const e=re();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},ae=async()=>{if(!re())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&oe()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await oe(),e};((t=document.getElementById("p"))=>{(()=>{const t=l("view");e.dataset.bespokeView=t===r||t===n?t:""})();const a=(e=>{const t=l(e);return c({[e]:void 0}),t})("sync")||void 0;var i,d,f,u,m,g,h,y,x,b,E,I;i=t,d=((...e)=>{const t=o.findIndex((e=>s()===e));return e.map((([e,n])=>e[t]&&n)).filter((e=>e))})([[1,1,0],Y({key:a})],[[1,1,1],B(t)],[[1,1,0],L],[[1,1,1],p],[[1,0,0],k()],[[1,1,1],$],[[1,1,1],H({history:!1})],[[1,1,0],P()],[[1,1,0],w],[[1,0,0],R],[[1,1,0],Z()],[[1,0,0],S()],[[1,0,0],te],[[1,1,1],v],[[1,1,0],ae]),u=1===(i.parent||i).nodeType?i.parent||i:document.querySelector(i.parent||i),m=[].filter.call("string"==typeof i.slides?u.querySelectorAll(i.slides):i.slides||u.children,(function(e){return"SCRIPT"!==e.nodeName})),g={},h=function(e,t){return(t=t||{}).index=m.indexOf(e),t.slide=e,t},b=function(e,t){m[e]&&(f&&x("deactivate",h(f,t)),f=m[e],x("activate",h(f,t)))},E=function(e,t){var n=m.indexOf(f)+e;x(e>0?"next":"prev",h(f,t))&&b(n,t)},I={off:y=function(e,t){g[e]=(g[e]||[]).filter((function(e){return e!==t}))},on:function(e,t){return(g[e]||(g[e]=[])).push(t),y.bind(null,e,t)},fire:x=function(e,t){return(g[e]||[]).reduce((function(e,n){return e&&!1!==n(t)}),!0)},slide:function(e,t){if(!arguments.length)return m.indexOf(f);x("slide",h(m[e],t))&&b(e,t)},next:E.bind(null,1),prev:E.bind(null,-1),parent:u,slides:m,destroy:function(e){x("destroy",h(f,e)),g={}}},(d||[]).forEach((function(e){e(I)})),f||b(0)})()}();</script></body></html>
